@@ -115,9 +115,9 @@
     <h2>Login</h2>
     <form>
       <label for="email">E-mail <span>(Use KIIT email id)</span></label>
-      <input type="email" id="email" placeholder="Enter your KIIT email" />
+      <input type="email" id="email" placeholder="Enter your KIIT email"  pattern="[a-zA-Z0-9._%+-]+@kiit\.ac\.in$" />
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter your password"  pattern="[a-zA-Z0-9._%+-]+@kiit\.ac\.in$" />
+      <input type="password" id="password" placeholder="Enter your password" />
       <a class="forgot" href="#">Forgot Password?</a>
       <button type="submit" class="login-btn">Login</button>
     </form>
