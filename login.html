@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: #000;
+      padding: 60px 40px;
+      border-radius: 40px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid #82a7ad;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    label span {
+      font-size: 12px;
+      color: #aaa;
+    }
+    input[type='email'],
+    input[type='password'] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 15px;
+      border: 2px solid #ccc;
+      background-color: #000;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 14px;
+      outline: none;
+    }
+    .forgot {
+      display: block;
+      text-align: right;
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: #aaa;
+      text-decoration: none;
+    }
+    .login-btn {
+      width: 207px;
+      height: 60px;
+      background: linear-gradient(90deg, #82a7ad 0%, #354547 65%);
+      border: 2px solid white;
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .login-btn:hover {
+      background: transparent;
+      color: white;
+    }
+    .social-label {
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #aaa;
+    }
+    .social-icons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .social-icons svg {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .signup {
+      margin-top: 20px;
+      font-size: 12px;
+    }
+    .signup a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form>
+      <label for="email">E-mail <span>(Use KIIT email id)</span></label>
+      <input type="email" id="email" placeholder="Enter your KIIT email" />
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" />
+      <a class="forgot" href="#">Forgot Password?</a>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    <p class="social-label">Login with social accounts</p>
+    <div class="social-icons">
+      <!-- Google -->
+<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <rect width="20" height="20" fill="url(#pattern0_62_539)" />
+      <defs>
+        <pattern id="pattern0_62_539" patternContentUnits="objectBoundingBox" width="1" height="1">
+          <use xlink:href="#image0_62_539" transform="scale(0.02)" />
+        </pattern>
+        <image id="image0_62_539" width="50" height="50" preserveAspectRatio="none"
+          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACkElEQVR4nO2ZO2sVQRSARyVRBFHQoPgqxcZEG1HBIo1dyvisRQjaa4QoCD4KwUaj+AuMGCxMxMoHJI0YVGxERVALNSYSLDQG8snBIyxyd3ZnZ2bv3rAfXAiX7Dn3u3v2zMy5xtTU1NS4ACwGdgH9wB3gFTAN/Abm9G95b1j/Z49cY6oCsAm4CHzCHbnmksRopkAHcB2YxR+5a9ckZtkSh4EpwjMNHCpDoA24SXxuSK5YEsuBUcrhB7A91p1wlZgEXgAj+prQ9/JI7A0uoSJ5y+kNMAB0pcRZBOwATgMfypY4kkPgM9DnUtdAO3As0TSiSnTk6E5jwFrPdWg0moSg3cPGLWCpqTLAxozFbqzyEoJuO2zPROFyKnsD+NEi0mdaAWB3RouNs+qGRrfZaQyYVoG/54k0ugrE6w306nFNLAegRky6Smi8UMw5lbVlEXzeZBFhs0vitPXjfgVEti0Ukc6FUlpbQjzs3yogsjJU+3U+uRVos/0puWdCLohnTGSAcym5H7sGkkFbGm/lUBRRog14n5L7cpFNY6Oj6D+ORxQ5Ycm7r0jAC5aAX4B1ESTWWwYUM8CyGAer8ZAHKy2pJ5Z8gz7BB7EzFEJGvmngriXPvNecC1gja0eGzLhPmWk5PczIMVxYIpHoINl81Ye03bGUjgLfM2L/ArZ6i2hSmbrn4R1wVoZwlgFdJ3Aq4yid5GQQicS3J2NPF2S/9lJnVnLt0wIT/HvAkmAiiSG2q4wPE8CKoBL/3ZmsThaCR06bQw+hAzkn667MA1cKLXweMquBq9pVQvAM6C5NoIHQBuB8xt4sjVl9oHuko5kqoBvNndIugdv6I8+UftifOmZ9DTzQcex+YFWzP3dNTY1pLf4A+riKh7P3srgAAAAASUVORK5CYII=" />
+      </defs>
+    </svg>
+  </a>
+  
+
+      <!-- Twitter (X) -->
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <rect width="20" height="20" fill="url(#pattern-twitter)" />
+          <defs>
+            <pattern id="pattern-twitter" patternContentUnits="objectBoundingBox" width="1" height="1">
+              <use xlink:href="#image-twitter" transform="scale(0.02)" />
+            </pattern>
+            <image id="image-twitter" width="50" height="50" preserveAspectRatio="none"
+              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADVklEQVR4nO2ZW4hNYRTH92BoBk2GiTSajpLJSMmQW+ZhyqgpHo6paR4wT1LCg9sDmnJ5wINCcikZDygJD5RQFClqJsolt0Ru4zZyv8xPX7PPtFrnts8+e5+90/7XeTn/71tr/fc53/r+Zx3LihAhQoT/BsAMoMnha76HeQcAcRU/lq+QPzjHYo+E7FVxbwKl+QbdloOQT0BVnvnWqZhPgJF5ibADDwQ6cxBzCShymWsh8Fc9mIl5ixAJaoDvIsE9oETwB5SYFS5yTAW+ihi/gHrPRIhE61WxuwQ3GHgoOCO6JofYMeCN2N8DLPJchJ2sH3BFJWsQ/CzVGG4BxQ7ilgP31UNq80WESDoW+CwSPgeGCX6nKmijg/NnzpTEMbdnLFcxy1Tiw4IbBNwW3G/z3U8TpwhoV7Gumhi+ixAFnFMFxAU/GfgpuLuyMYh1m1UM00DKCyJCFDEaeC+KeCt7PbBJFblD7V+i+C5gXEFFiGJaVDGnlcW4IThzN9TZXB3wQ3W4mYGISAA4ocT0tUygGvimbuhpwAfV+VqsoAGMAF6Jwj4CYwS/UgnVvm2NFRYAc+0nm8DFRPu07x7dXhM4ZIUNwEFV5HLBVQHdij9vzpEVNpBsUYxnGi/4ViXklBVWkMWiACeVmGYrrCDZomwQXAXwOl1jCBVIbVFqBb9ACb1QEF/lBkCjKvaO9E/AUcUvtcIGYCjQQTK2izVlwDPBfQnMnqQC0B84Q2r0WRR7bb26e66Z/VYYAOxTxXcoi/IYGCLW71Hr1waroLeo1aqop8YNA6vU+/vFnlLggeCMkZwUpIi4mnx0JyYftkW5rMQ0ir3T1d3TaX41BiGi1j6saScfQKVyvC+B4YLfqoRuKbSImLrgetJNGjNZFHP72y4gAfPpzi6UiDL7fnA8+chkUYAJam72SDYGv0QU21Zd4ni2GzqNRanMMCrd7ffg4YjbyUcmi5JmbjbPLyFtqhDzFajIMUZ7OotC77mTc7MXcm7mlYhmdRu/c2MtslkUkudm7V6KmOPl5COTRSH13KzJCxHVfkw+zGHGObqAUflOSeRPWM88kW1R9PA6E866TVQCXPdz8gFMsd2AU7S6SRJTf0bG/Zh82JNHp3+4NnidP0KECBGsQPAP0VYCE3AyK7wAAAAASUVORK5CYII=" />
+          </defs>
+        </svg>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <rect width="20" height="20" fill="url(#pattern-google)" />
+          <defs>
+            <pattern id="pattern-google" patternContentUnits="objectBoundingBox" width="1" height="1">
+              <use xlink:href="#image-google" transform="scale(0.02)" />
+            </pattern>
+            <image id="image-google" width="50" height="50" preserveAspectRatio="none"
+              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADHUlEQVR4nO2ZXWhPYRzHz7YQtqHR1JC31FJcKHErN7haYUy5YC4UpZT3i90wkbLkZXHhQthGWcaNGzculMJwIy/LXNC8FJNhfPSbR53+znlezjnPf0vnU6vVOf/v9/k+/+ec5/d7/kGQk5OT4wJQBiwF9gFXgSfAB+C7+pP/H6trcs8SoDQYKQDTgcPAa9zpBZqBacMZYArQCnwjPaJxGphc7BANwHuy5x2wrhgBRgFn8c8Z8fIVYhxwk+JxQzx9fBPFDPGXW8DoLIMUYznFcTqrEBs0Jm3AFuAU8DHFYB8BTcBG4FXE9fosXrG6t1Nt6N5KtSf8dAjwFqgDSkI6TRH39QFVaYLIPqGjMuIz9UA7sBVYBNQAY4AKYC6wTA22E5gR8fnGGK+TaXZs02ZXnnCOdL6bYrwGElUAquwwUeshSJPGr9lVrFTVQSYaPATp1PhJPVfmIiZVLMMU5LrBc7GLmJTZJtqyDiEAUw1vyj2BLapn0CEvgZmBJ4BdGu8OFyFpgHR0+QohSDkPDMZ4dwe2WJToOwPPAPdjvPtcREz7x3qvKYKhMXTFeA+4iPQbgjR6TREMjeF2jHe/i8hLQxC3jSkBxO9jPS4idw1Buj2HWKjxvucidAUzqzwGuaTxbXcR2m4R5AVQ7SHEauCXxnebi9h87HiQ5cbInxBfDZ4LXARLLItGVGco3+DYFAFmAectvHqcTyeBA7jxRrW8K0zdnKquZ6smSqrdH5Yee5PMUhXwpUDoObADeGZheiJq9qQrBJ7izoC03s5BlGlLgZjM3FrpDIE7GtPL4T48QrdG9eEuHEsUQhlOiHhWpHyZo649jDCUAU600JYJsaVXev7EQZShrPlCWkNV6kH1DZwDjgArLXVL1VK1oS5ViJDp8QLhT1kcPABHLUIcyiREaPYupH6D/Ku72RCiQ/espTn/vRYyGVRLaV7Sk3NgjSbERTkPyzREwUa5W3eamFGQlqL8LCcPtDruzDpIj89iNG4QFeow7XMGQfrVg1/ub8TmwVQD+0N7ivW6BparpTopGEkAtcD44R5HTk7Of8xv3/mFvPsZA/AAAAAASUVORK5CYII=" />
+          </defs>
+        </svg>
+      </a>
+    </div>
+
+    <div class="signup">
+      Don’t have an account? <a href="#">Sign Up</a>
+    </div>
+  </div>
+</body>
+</html>
+
