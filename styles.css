@@ -1,0 +1,698 @@
+/* General Reset and Base */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif; /* Ensure Poppins is linked in HTML */
+  background-color: #121212; /* Dark background for the whole page */
+  color: #e2e2e2; /* Default text color */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Removes extra space below images */
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #e2e2e2;
+}
+
+/* --- NAVIGATION BAR STYLES --- */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  position: absolute; /* Position over the hero background */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none; /* Allow clicks to pass through header background */
+}
+
+.nav-wrapper {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black for navbar */
+  padding: 8px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  pointer-events: all; /* Restore pointer events for navbar content */
+  height: 40px;
+}
+
+.nav-top-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.left-nav,
+.right-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 58px;
+  height: 32px;
+  padding: 0 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0; /* Adjust this value */
+  z-index: 10;
+  position: relative;
+}
+
+.logo {
+  width: 160px;
+  height: auto;
+  display: block;
+  transform: translateY(-50%);
+}
+
+.logo-tagline {
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-top: -30px; /* Adjust this value */
+  white-space: nowrap;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: #e2e2e2;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.nav-center-spacer {
+  flex-grow: 1;
+}
+
+/* --- HERO SECTION STYLES --- */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 90vh; /* Adjust height as needed, e.g., 80vh for 80% of viewport height */
+  background: linear-gradient(252.44deg, #B3E6EE 0%, #203A43 50%, #2C5364 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center;
+  color: #FFFFFF;
+  padding-top: 150px; /* Space for the navbar */
+  box-sizing: border-box; /* Include padding in height */
+  /* Rectangle 4 */
+
+}
+
+/* Gradient Overlay */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)); /* Adjust transparency */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* Ensure content is above the overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+  max-width: 942px; /* Match nav width for consistent layout */
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.hero-text h1 {
+  font-size: 72px; /* Large font size for KIIT E-CELL */
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+  text-align: left; /* Align text to the left */
+}
+
+.hero-text p {
+  font-size: 24px; /* Smaller font for tagline */
+  font-weight: 400;
+  margin-bottom: 50px;
+  letter-spacing: 0.02em;
+    text-align: left; /* Align text to the left */
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px; /* Space between text and buttons */
+}
+
+.btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.gradient {
+  /* Join Us btn */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 18px;
+gap: 10px;
+
+position: relative;
+
+
+background: linear-gradient(96.68deg, #82A7AD 3.89%, #354547 65.23%);
+border: 5px solid #000000;
+border-radius: 25px;
+
+}
+
+.btn.login {
+  color: #FFFFFF;
+  border: 1px solid #333; /* Slight border for visibility */
+  /* Log In btn */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 18px;
+gap: 10px;
+position: relative;
+background: #000000;
+border: 5px solid #000000;
+border-radius: 25px;
+
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Hero Right Logo */
+.hero-right-logo {
+    position: absolute;
+    right: 50px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FFFFFF;
+    text-align: center;
+    pointer-events: none; /* Make it unclickable */
+
+}
+.hero-logo-ellipse {
+  width: 200px; /* Diameter of the circle */
+  height: 200px; /* Diameter of the circle */
+  border-radius: 50%; /* Makes the container circular */
+  border: 3px solid black; /* Your desired border */
+  display: flex; /* Use flexbox to center the image inside */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Important: Hides parts of the image that extend beyond the circular border */ /* Optional glow */
+  background-color: black /* Optional: background color for the circle if image doesn't fill it */
+  
+}
+.hero-logo-border{
+    width: 250px; /* Diameter of the circle */
+    height: 250px; /* Diameter of the circle */
+    border-radius: 50%; /* Makes it a perfect circle */
+    
+    border: 2px solid #3467E5; /* Solid blue border */
+    display: flex; /* Use flexbox to center content (logo and text) inside */
+    justify-content: center; /* Center vertically */
+    align-items: center;
+}
+.hero-right-logo img {
+    width: 150px; /* Adjust size of the logo */
+    height: auto; /* Blue glow */
+    opacity: 0.7; /* Make it slightly transparent */
+}
+
+.hero-right-logo-text {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-top: 5px;
+}
+
+/* --- ABOUT US SECTION --- */
+.about-us-section {
+  padding: 80px 20px;
+  background-color: #1a1a1a; /* Slightly lighter dark background */
+  text-align: center;
+}
+
+.about-us-section .section-title {
+  margin-bottom: 60px;
+}
+
+.about-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px; /* Space between text and logos */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  max-width: 600px;
+  color: #ccc; /* Slightly lighter text for readability */
+}
+
+.about-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  filter: grayscale(100%); /* Make logos slightly gray */
+}
+
+.about-logo-ecell {
+  width: 120px; /* Adjust logo size */
+  filter: brightness(0.8); /* Make it slightly less bright than the nav logo */
+}
+
+.about-logo-kiit {
+  width: 150px; /* Adjust logo size */
+}
+
+/* --- QUOTE SECTION --- */
+.quote-section {
+  padding: 60px 20px;
+  background-color: #121212; /* Darker background */
+  text-align: center;
+}
+
+.quote-section .section-title {
+  font-size: 28px;
+  font-weight: 400; /* Lighter font weight */
+  letter-spacing: 0.08em; /* More letter spacing */
+  color: #e2e2e2;
+  margin-bottom: 0; /* No margin bottom if it's just the text */
+}
+
+/* --- LIAISON SECTION --- */
+.liaison-section {
+  padding: 80px 20px;
+  background-color: #1a1a1a; /* Same as about section */
+  text-align: center;
+}
+
+.liaison-officers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow officers to wrap to next line */
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.officer img {
+  width: 150px; /* Size of circular images */
+  height: 150px;
+  border-radius: 50%; /* Makes image circular */
+  object-fit: cover; /* Ensures image covers the circle */
+  border: 3px solid #0072FF; /* Blue border around circles */
+  box-shadow: 0 0 15px rgba(0, 114, 255, 0.4); /* Subtle blue glow */
+}
+
+.section-divider {
+  width: 80%; /* Adjust width of the line */
+  max-width: 600px;
+  border: none;
+  border-top: 1px solid #333; /* Darker line */
+  margin: 80px auto 0 auto; /* Space below officers */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .hero-section {
+    height: 70vh;
+  }
+  .hero-text h1 {
+    font-size: 60px;
+  }
+  .hero-text p {
+    font-size: 20px;
+  }
+  .hero-right-logo {
+      position: absolute;
+    right: 50px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex; /* Flex container to allow alignment if multiple elements were here */
+    justify-content: center; /* Center the ellipse */
+    align-items: center; /* Center the ellipse */
+    pointer-events: none; /* Make it unclickable */
+    z-index: 2;
+
+  }
+  .hero-logo-ellipse{
+     width: 250px; /* Diameter of the circle */
+    height: 250px; /* Diameter of the circle */
+    border-radius: 50%; /* Makes it a perfect circle */
+    background-color: #000; /* Solid black background for the circle */
+    border: 2px solid rgba(0, 114, 255, 0.8); /* Solid blue border */
+    box-shadow: 0 0 20px 10px rgba(0, 114, 255, 0.4); /* Blue outer glow */
+    display: flex; /* Use flexbox to center content (logo and text) inside */
+    flex-direction: column; /* Stack logo and text vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center;
+    color: #FFFFFF; /* Text color for tagline inside */
+    position: relative;
+  }
+  .hero-logo-ellipse img { /* Target the image INSIDE the ellipse */
+    width: 120px; /* Size of the logo itself, adjust to fit within the ellipse */
+    height: auto;
+    filter: brightness(1.2) drop-shadow(0 0 5px rgba(255,255,255,0.3)); /* Slight brightness/glow for the white logo */
+    margin-bottom: 5px; /* Space between logo and text */
+}
+  .hero-right-logo img {
+      width: 100px;
+  }
+  .about-content {
+      flex-direction: column;
+  }
+  .about-content p {
+      text-align: center;
+      max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar responsiveness */
+  .nav-wrapper {
+    width: 100%;
+    padding: 8px 0;
+  }
+
+  .nav-top-row {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .left-nav,
+  .right-nav {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .nav-center-spacer {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    position: static;
+    transform: none;
+    margin-right: 20px;
+  }
+
+  .nav-top-row.active .left-nav,
+  .nav-top-row.active .right-nav {
+    display: flex;
+  }
+
+  .logo-area {
+    margin-top: 20px;
+    position: static;
+    transform: none;
+  }
+
+  .logo {
+    transform: none;
+  }
+
+  .logo-tagline {
+    margin-top: 5px;
+  }
+
+  /* Hero section responsiveness */
+  .hero-section {
+    height: 100vh;
+    padding-top: 100px;
+  }
+  .hero-text h1 {
+    font-size: 48px;
+  }
+  .hero-text p {
+    font-size: 18px;
+  }
+  .cta-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .btn {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .hero-right-logo {
+      display: none;
+  }
+
+  /* About and Liaison sections responsiveness */
+  .about-us-section{
+    background: linear-gradient(252.44deg, #B3E6EE 0%, #203A43 50%, #2C5364 100%);
+filter: blur(70px);
+
+  }
+   .quote-section, .liaison-section {
+    padding: 50px 15px;
+  }
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  .about-content {
+    gap: 30px;
+  }
+  .about-content p {
+      font-size: 16px;
+  }
+  .liaison-officers {
+    gap: 20px;
+  }
+  .officer img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 40px;
+  }
+  .hero-text p {
+    font-size: 16px;
+  }
+  .section-title {
+    font-size: 24px;
+  }
+}
+/* --- LIAISON SECTION --- */
+.liaison-section {
+  padding: 80px 20px;
+  background-color: #1a1a1a;
+  text-align: center;
+}
+
+.liaison-officers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+/* Container for each officer card */
+.officer {
+  position: relative;
+  width: 150px; /* Initial width of the circle */
+  height: 150px; /* Initial height of the circle */
+  border-radius: 50%; /* Initial circular shape */
+  overflow: hidden; /* Hide overflowing content */
+  cursor: pointer;
+  transition: all 0.4s ease-out; /* Smooth transition for all properties */
+  display: flex; /* Use flexbox to center content */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inner card that will transform */
+.officer-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Start as a circle */
+  display: flex;
+  flex-direction: column; /* For vertical stacking of image and text */
+  justify-content: flex-start; /* Image at top initially */
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.4s ease-out;
+  background-color: transparent; /* No background until hover */
+}
+
+
+.officer-details {
+  position: absolute; /* Position details relative to .officer-card */
+  bottom: -100%; /* Start hidden below the card */
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #000; /* Black background for text area */
+  color: #fff;
+  text-align: center;
+  opacity: 0; /* Hidden by default */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.officer-name {
+  font-size: 20px; /* */
+  font-weight: 600; /* */
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Optional subtle shadow for text */
+}
+
+.officer-role {
+  font-size: 14px; /* */
+  font-weight: 300; /* */
+  color: #ccc;
+  letter-spacing: 0.02em;
+}
+
+
+/* --- HOVER EFFECTS --- */
+.officer:hover {
+  width: 150px; /* Wider on hover, adjust as needed */
+  height: 250px; /* Taller on hover, adjust as needed */
+
+  border-radius: 100px 100px 0 0; /* Square corners on hover */
+  border: 5px solid #79A6DD;
+  background-color: #000; /* Black background for the whole card */
+
+}
+
+.officer:hover .officer-card {
+  border-radius: 0; /* Remove inner border radius */
+  justify-content: space-between; /* Push image to top, text to bottom */
+}
+
+.officer:hover img {
+  border-radius: 50%; /* Keep image circular even when container is square */
+  transform: translateY(-20px); /* Slightly move image up to make space for text */
+}
+
+.officer:hover .officer-details {
+  bottom: 0; /* Reveal details at the bottom */
+  opacity: 1; /* Make details visible */
+}
+
+
+.section-divider {
+  width: 80%;
+  max-width: 600px;
+  border: none;
+  border-top: 1px solid #333;
+  margin: 80px auto 0 auto;
+}
+
+/* --- Responsive Design (update relevant sections) --- */
+@media (max-width: 768px) {
+  /* ... other responsive styles ... */
+  .officer {
+    width: 120px; /* Smaller initial size on mobile */
+    height: 120px;
+  }
+  .officer:hover {
+    width: 150px; /* Smaller hover size on mobile */
+    height: 200px;
+  }
+  .officer-name {
+    font-size: 16px;
+  }
+  .officer-role {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* ... further reduce sizes if needed ... */
+}
+
+
+
