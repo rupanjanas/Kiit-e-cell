@@ -689,10 +689,184 @@ filter: blur(70px);
     font-size: 12px;
   }
 }
+.header-background{
+    /* Rectangle 19 */
 
-@media (max-width: 480px) {
-  /* ... further reduce sizes if needed ... */
+position: absolute;
+width: 100%;
+height: 120px;
+left: 0px;
+top: 0px;
+background: linear-gradient(252.44deg, #B3E6EE 0%, #203A43 50%, #2C5364 100%);
+-webkit-backdrop-filter: blur(40px);
+backdrop-filter: blur(40px);
+box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.64);
 }
+
+.events-title{
+font-family: Porter Sans Block;
+font-weight: 400;
+font-size: 96px;
+line-height: 114.99999999999999%;
+letter-spacing: 6%;
+text-align: center;
+vertical-align: middle;
+position: relative;
+padding: 120px 120px 0px 120px;
+}
+.event-name{
+font-family: Nunito;
+font-weight: 800;
+font-size: 60px;
+line-height: 114.99999999999999%;
+letter-spacing: 6%;
+text-align: center;
+vertical-align: middle;
+position: relative;
+}
+.event-card{
+     display: flex; /* Enables Flexbox for the container */
+  justify-content: center; /* Centers the images horizontally within the container */
+  align-items: flex-start; /* (Optional) Centers images vertically if container has a height */
+  flex-wrap: wrap; /* Allows images to wrap to the next line on smaller screens if they don't fit */
+  gap: 80px; /* Creates space (gap) between the images */
+  /* Optional: Add some padding around the container */
+  width: 100%; /* Ensure the container takes full width */
+  max-width: 1200px; /* Optional: Constrain the max width of the container */
+  margin: 0 auto;
+  padding: 20px; /* Optional: Add some padding around the container */
+}
+.event-image{
+max-width: 100%; /* Ensure images are responsive and don't overflow */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
+  max-width: calc(25% - 11.25px);
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Removes extra space below images */
+  object-fit: cover; /* Useful if you set a fixed height for images, crops them to fit */
+  border-radius: 8px; /* Optional: Soften image corners */
+  
+}
+.event-image:hover{
+    transform: scale(1.33); /* Slightly zoom in on hover */
+    animation:dissolve 0.6s ease-in-out; /* Smooth transition effect */
+  opacity: 0.7;
+  transition: opacity 0.6s ease-in-out;
+}
+@media (max-width: 992px) {
+  .event-image {
+    max-width: calc(50% - 10px); /* Two images per row on tablets */
+  }
+}
+/* For mobile devices */
+@media (max-width: 576px) {
+  .event-image {
+    max-width: 100%; /* One image per row on mobile, stacking them */
+  }
+  .event-card {
+    gap: 10px; /* Smaller gap on mobile */
+    padding: 10px;
+  }
+}
+
+/* --- Core Styles for the button container --- */
+.global-register-button-container {
+    position: fixed; /* Ensures it stays in the viewport regardless of scroll */
+    top: -100vh; /* Starts completely off-screen above the viewport */
+    left: 50%; /* Starts at the horizontal center */
+
+    /* Initial animation state: slightly smaller, completely transparent,
+       and horizontally centered (first part of transform) */
+    transform: translate(-50%, 0) scale(0.8);
+    opacity: 0;
+
+    z-index: 1000; /* Ensures it's on top of everything (navbar, content, blur) */
+    box-sizing: border-box;
+    width: auto; /* Let content define width */
+    white-space: nowrap; /* Prevent button text wrapping */
+    padding: 10px 0; /* Padding for the container, if needed around the button */
+
+    /* Animation transition properties for smooth in/out */
+    transition: top 0.6s ease-out, /* Smooth vertical slide */
+                transform 0.6s ease-out, /* Smooth scaling and vertical centering */
+                opacity 0.4s ease-out; /* Smooth fade in/out, slightly faster */
+}
+
+/* --- Active state when button is visible --- */
+.global-register-button-container.active {
+    top: 50%; /* Moves to the vertical center of the viewport */
+
+    /* Final animation state: perfectly centered (horizontally and vertically)
+       and scales to its normal size (1) */
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1; /* Fully visible */
+}
+
+/* --- Styling for the actual button inside the container --- */
+/* Assuming your button has class .main-register-button or id="mainRegisterBtn" */
+/* If you want to use a class like 'register-btn', update your HTML and this selector */
+.register-btn { /* Or #mainRegisterBtn if styling by ID, or .register-btn if using that class */
+    height: 100px;
+    width: 300px;
+    font-family: 'Montserrat', sans-serif; /* Ensure Montserrat is linked in HTML if custom font */
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 115%; /* Simplified from 114.999... */
+    letter-spacing: 0.09em; /* Changed from 9% to 0.09em for more standard usage */
+    text-align: center;
+    vertical-align: middle; /* This usually applies to inline/table-cell elements, often not needed on a block button */
+    background-color: #000;
+    color: rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(88, 116, 121, 1);
+    cursor: pointer; /* Indicate it's clickable */
+    /* Add hover effects for the button itself for better UX */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease; /* Smooth hover transition */
+}
+
+/* --- NEW STYLES FOR THE BLUR OVERLAY (keep as is from previous correct solution) --- */
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust this alpha for dimming intensity */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 999; /* Below the button (1000) but above content */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-out, visibility 0s linear 0.4s;
+}
+
+.blur-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease-out;
+}
+
+/* --- Responsive Adjustments (no changes needed for button positioning here) --- */
+@media (max-width: 992px) {
+    /* ... your other responsive rules ... */
+    .main-register-button {
+        font-size: 36px; /* Adjust font size for smaller screens */
+        height: 80px;
+        width: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-register-button {
+        font-size: 28px; 
+        height: 70px;
+        width: 140px;
+    }
+}
+
 
 
 
