@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      background-color: #000;
+      border: 1px solid #2e2e2e;
+      padding: 40px;
+      border-radius: 30px;
+      width: 400px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 90%;
+      margin-left: 10px;
+      padding: 12px 16px;
+      margin-bottom: 25px;
+      border: 2px solid white;
+      border-radius: 15px;
+      background-color: transparent;
+      color: white;
+      font-size: 1rem;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #00d9ff;
+    }
+
+    .btn-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .svg-btn {
+      width: 207px;
+      height: 60px;
+      background: linear-gradient(90deg, #82a7ad 0%, #354547 65%);
+      border: 2px solid white;
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .svg-btn:hover {
+      background: transparent;
+      color: white;
+    }
+       </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Sign up</h2>
+    <form>
+      <label for="email">E-mail <span class="note">(Use KIIT email id)</span></label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" name="confirm-password" required />
+
+      <div class="btn-wrapper">
+        <button type="submit" class="svg-btn">Sign up</button>
+         
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
+
+
