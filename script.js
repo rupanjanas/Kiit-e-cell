@@ -180,7 +180,7 @@ function openLoginPopup() {
     const targetY = target.getBoundingClientRect().top + window.scrollY;
 
     gsap.to(window, {
-      duration: 1,
+      duration: 600,
       scrollTo: targetY,
       ease: "elastic.out(1, 0.3)" // mimics spring
     });
