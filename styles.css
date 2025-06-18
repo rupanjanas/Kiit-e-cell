@@ -2,7 +2,6 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif; /* Ensure Poppins is linked in HTML */
-  background-color: #121212; /* Dark background for the whole page */
   color: #e2e2e2; /* Default text color */
 }
 
@@ -46,7 +45,7 @@ header {
 .nav-wrapper {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black for navbar */
-  padding: 8px 20px;
+  padding: 8px 20px 20px 20px; /* Padding for the navbar */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,10 +134,8 @@ nav a {
   display: flex;
   flex-direction: column;
   justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-  text-align: center;
-  color: #FFFFFF;
-  padding-top: 150px; /* Space for the navbar */
+  
+  color: #FFFFFF; /* Space for the navbar */
   box-sizing: border-box; /* Include padding in height */
   /* Rectangle 4 */
 
@@ -166,6 +163,8 @@ nav a {
   max-width: 942px; /* Match nav width for consistent layout */
   padding: 0 20px;
   box-sizing: border-box;
+  align-items: center; /* Center content horizontally */
+  text-align: center;
 }
 
 .hero-text h1 {
@@ -250,7 +249,7 @@ border-radius: 25px;
 /* Hero Right Logo */
 .hero-right-logo {
     position: absolute;
-    right: 50px; /* Adjust as needed */
+    right: -100px; /* Adjust as needed */
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -473,7 +472,7 @@ border-radius: 25px;
 
   .hamburger {
     display: block;
-    position: static;
+    position: absolute;
     transform: none;
     margin-right: 20px;
   }
@@ -970,7 +969,7 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
     padding: 10px; /* 10px 0 */
     background: none; /* No background */
     border: none; /* No default border */
-    border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5); /* The underline */
+    border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5); /* The underline */ /* Input text color */
     font-size: 1.25rem; /* 20px, closer to the 24px in mockup but scales with rem */
     outline: none; /* Remove outline on focus */
     transition: border-color 0.3s ease; /* Smooth underline color change */
@@ -980,7 +979,7 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
     padding-top: 100px; /* 10px 0 */
     background: none; /* No background */
     border: none; /* No default border */
-    border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5); /* The underline */
+    border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5); /* The underline *//* Input text color */
     font-size: 1.25rem; /* 20px, closer to the 24px in mockup but scales with rem */
     outline: none; /* Remove outline on focus */
     transition: border-color 0.3s ease; /* Smooth underline color change */
@@ -1287,4 +1286,13 @@ html {
   scroll-behavior: smooth;
   animation-duration: 600ms; /* Smooth scroll duration */
   animation-fill-mode: both; /* Maintain end state after animation */
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 600ms ease-in;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 600ms ease-in;
 }
