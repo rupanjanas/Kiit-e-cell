@@ -121,3 +121,37 @@ function animateAndRedirect(link) {
     window.location.href = link;
   }, 600); // Adjust the delay to match your CSS animation duration (600ms in this case)
 }
+function openLoginPopup() {
+  // Create the popup container
+  const popupContainer = document.createElement('div');
+  popupContainer.className = 'popup-container';
+
+  // Create the popup content box
+  const popupContent = document.createElement('div');
+  popupContent.className = 'popup-content';
+
+  // Add a close button
+  const closeButton = document.createElement('span');
+  closeButton.className = 'close-button';
+  closeButton.innerHTML = '&times;';
+  closeButton.onclick = function () {
+    document.body.removeChild(popupContainer);
+  };
+
+  // Load login.html content
+  fetch('login.html')
+    .then(response => response.text())
+    .then(html => {
+      popupContent.innerHTML = html;
+      popupContent.appendChild(closeButton);
+      popupContainer.appendChild(popupContent);
+      document.body.appendChild(popupContainer);
+    })
+    .catch(error => {
+      console.error('Error loading login.html:', error);
+    });
+}
+
+
+
+
