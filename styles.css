@@ -1240,3 +1240,18 @@ body.fade-out {
   from { transform: scale(0.95); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+@keyframes dissolve {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.dissolve-out {
+  animation-name: dissolve;
+  animation-duration: 600ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
