@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // --- Navbar loader ---
-   const navbarPlaceholder = document.getElementById('navbar-placeholder');
+   // Load Navbar dynamically into the placeholder
+const navbarPlaceholder = document.getElementById('navbar-placeholder');
 
 if (navbarPlaceholder) {
   fetch('Navbar.html')
@@ -31,6 +32,7 @@ function setupNavbarToggle() {
     console.warn("Hamburger or navLinks not found in loaded Navbar.");
   }
 }
+
     // --- Footer loader ---
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {        
@@ -117,15 +119,20 @@ function setupNavbarToggle() {
             }
         }
     });
-});
-function animateAndRedirectTo(link) {
-  document.body.classList.add('fade-out');
-
-  // Delay based on the animation duration
+    function animateAndRedirectTo(url) {
+  document.body.classList.add("fade-out");
   setTimeout(() => {
-    window.location.href = link;
-  }, 600); // Adjust the delay to match your CSS animation duration (600ms in this case)
+    window.location.href = url;
+  }, 6000); // Match CSS duration
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("fade-in");
+});
+
+});
+
+
 function openLoginPopup() {
   // Create the popup container
   const popupContainer = document.createElement('div');
@@ -168,7 +175,7 @@ function openLoginPopup() {
   popupContainer.appendChild(popupContent);
   document.body.appendChild(popupContainer);
 
-     popupContainer.addEventListener('click', function (event) {
+   popupContainer.addEventListener('click', function (event) {
     if (!popupContent.contains(event.target)) {
       document.body.removeChild(popupContainer);
     }
