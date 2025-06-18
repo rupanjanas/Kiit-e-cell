@@ -863,6 +863,7 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
     max-width: 75rem; /* Maximum width for the entire contact component (1200px) */
     margin: 0 auto; /* Centers the contact component on the page */
     gap: 2.5rem; /* Space between the image area and the form area (40px) */
+  padding-top: 90px;
 
 }
 
@@ -1053,7 +1054,7 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
     border: none; /* No explicit border, gradient handles it */
     border-radius: 1.5625rem; /* 25px */
     font-family: "Montserrat", Helvetica; /* Font from your Anima code */
-    font-size: 2rem; /* 32px */
+    font-size: 24px; /* 32px */
     font-weight: 800;
     text-align: center;
     letter-spacing: 0.18rem; /* 2.88px */
