@@ -979,8 +979,8 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
 /* Floating Label Effect: Moves label up when input is focused or has content */
 
 /* Input/Textarea Focus Underline Color */
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form input,
+.contact-form textarea {
     border-bottom-color: #0072FF; /* Accent color for underline on focus */
     color:white; /* Change text color to white on focus */
 }
