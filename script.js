@@ -185,3 +185,13 @@ function openLoginPopup() {
       ease: "elastic.out(1, 0.3)" // mimics spring
     });
   }
+function handleRegister(button) {
+  const eventName = button.getAttribute("data-event");
+
+  if (eventName === "Ideathon") {
+    window.location.href = "error.html";
+  } else {
+    openLoginPopup(); // assuming you already defined this elsewhere
+  }
+}
+
