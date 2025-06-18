@@ -887,13 +887,13 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
     display: flex; /* Use flexbox to center the logo inside */
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Ensures the logo stays within bounds if it's too big */
+
 }
 
 .contact-image-area img {
     max-width: 80%; /* Logo takes up 80% of its container's width */
     max-height: 80%; /* Logo takes up 80% of its container's height */
-    object-fit: contain; /* Scales logo to fit, maintaining aspect ratio */
+    
 }
 
 /* --- Right Contact Form Area Styles --- */
