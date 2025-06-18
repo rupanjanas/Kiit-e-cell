@@ -122,7 +122,7 @@ function openLoginPopup() {
 function handleRegister(button) {
   const eventName = button.getAttribute("data-event").trim().toLowerCase();
 
-  if (eventName === "ideathon") {
+  if (eventName === "Ideathon") {
     window.location.href = "errorpage.html";
   } else {
     openLoginPopup();
