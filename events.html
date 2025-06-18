@@ -29,12 +29,27 @@
   width: 100%;
   height: 100%;
 }
+     .centered-image {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Optional: vertical centering if height is defined */
+}
+
+.centered-image a {
+  display: inline-block;
+}
+
+.centered-image .event-image {
+  display: block;
+  margin: 0 auto;
+  /* No width/height set – keeps original size */
+}
     </style>
   <!-- Navbar placeholder -->
   <header class="header-background">
     <div id="navbar-placeholder"></div>
   </header>
-  <div class="svg-login-container">
+   <div class="svg-login-container">
     <a href="login.html" class="login-button">
       <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <rect width="80" height="80" fill="url(#pattern0_62_569)"/>
@@ -92,14 +107,13 @@
         </div>
 
         <!-- Ideathon -->
-        <div class="event-block">
+       <div class="event-block" >
           <h2 class="event-name">Ideathon</h2>
-          <div class="event-card">
+          <div class="event-card centered-image">
             <a href="errorpage.html"><img src="assets/2172d2bb2837ab6ff6c8df6fa88d4872fc90ef65.png" alt="Ideathon" class="event-image" /></a>
           </div>
          
         </div>
-
       </div>
     </section>
   </main>
