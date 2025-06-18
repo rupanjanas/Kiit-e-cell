@@ -1,77 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KIIT E-CELL - Events</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main>
-    <div class="header-background">
-      <header>
-        <div id="navbar-placeholder"></div>
-      </header>
-    </div>
+  <!-- Navbar placeholder -->
+  <header class="header-background">
+    <div id="navbar-placeholder"></div>
+  </header>
 
-    <div class="events-section">
+  <!-- Main Events Section -->
+  <main>
+    <section class="events-section">
       <h1 class="events-title">Events</h1>
       <div class="events-list">
 
-        <!-- I camp -->
-        <div class="global-register-button-container">
-          <button id="mainRegisterBtn" class="register-btn">Register</button>
-        </div>
-        <h2 class="event-name">I camp</h2>
-        <div class="event-card">
-          <img src="assets/69dc1e14cfa2f45d3e6a054311d7c10d58a05fff.png" alt="Event 1" class="event-image" />
-          <img src="assets/bf237b3c45b6dad4a9a1859b89a5d3e7c835e3af.png" alt="Event 2" class="event-image" />
+        <!-- I Camp -->
+        <div class="event-block">
+          <h2 class="event-name">I camp</h2>
+          <div class="event-card">
+            <img src="assets/69dc1e14cfa2f45d3e6a054311d7c10d58a05fff.png" alt="I Camp 1" class="event-image" />
+            <img src="assets/bf237b3c45b6dad4a9a1859b89a5d3e7c835e3af.png" alt="I Camp 2" class="event-image" />
+          </div>
+          <div class="global-register-button-container">
+            <button id="mainRegisterBtn" class="register-btn" onclick="openLoginOnPopup()" data-event="I camp">Register</button>
+          </div>
         </div>
 
         <!-- Build School -->
-        <div class="global-register-button-container">
-          <button class="register-btn">Register</button>
-        </div>
-        <h2 class="event-name">Build School</h2>
-        <div class="event-card">
-          <img src="assets/2c6ad4b618a0a1362567f4b103e1eb4407447b01.png" alt="Event 1" class="event-image" />
-          <img src="assets/27f751a5e4160495a40e20afff1c387c44f173ce.png" alt="Event 2" class="event-image" />
+        <div class="event-block">
+          <h2 class="event-name">Build School</h2>
+          <div class="event-card">
+            <img src="assets/2c6ad4b618a0a1362567f4b103e1eb4407447b01.png" alt="Build School 1" class="event-image" />
+            <img src="assets/27f751a5e4160495a40e20afff1c387c44f173ce.png" alt="Build School 2" class="event-image" />
+          </div>
+          <div class="global-register-button-container">
+            <button id="mainRegisterBtn" class="register-btn" onclick="openLoginOnPopup()" data-event="Build School">Register</button>
+          </div>
         </div>
 
         <!-- Skill Sprint -->
-        <div class="global-register-button-container">
-          <button class="register-btn">Register</button>
-        </div>
-        <h2 class="event-name">Skill Sprint</h2>
-        <div class="event-card">
-          <img src="assets/949b4d23c6943766c6ffb42f86f0efbc28d39822.png" alt="Event 1" class="event-image" />
-          <img src="assets/a13af9ea1710104003f2ed4cbae6272ccceeead6.png" alt="Event 2" class="event-image" />
-          <img src="assets/533ceccd8c56720093128f52b481e8cbe5a36ad9.png" alt="Event 3" class="event-image" />
-          <img src="assets/4141792f4599c321e3e306299818fbd577f228bc.png" alt="Event 4" class="event-image" />
+        <div class="event-block">
+          <h2 class="event-name">Skill Sprint</h2>
+          <div class="event-card">
+            <img src="assets/949b4d23c6943766c6ffb42f86f0efbc28d39822.png" alt="Skill Sprint 1" class="event-image" />
+            <img src="assets/a13af9ea1710104003f2ed4cbae6272ccceeead6.png" alt="Skill Sprint 2" class="event-image" />
+            <img src="assets/533ceccd8c56720093128f52b481e8cbe5a36ad9.png" alt="Skill Sprint 3" class="event-image" />
+            <img src="assets/4141792f4599c321e3e306299818fbd577f228bc.png" alt="Skill Sprint 4" class="event-image" />
+          </div>
+          <div class="global-register-button-container">
+            <button id="mainRegisterBtn" class="register-btn" onclick="openLoginOnPopup()"" data-event="Skill Sprint">Register</button>
+          </div>
         </div>
 
         <!-- Ideathon -->
-        <div class="global-register-button-container">
-          <button id="ideathonRegisterBtn" class="register-btn1" data-event="Ideathon">Register</button>
-        </div>
-        <h2 class="event-name">Ideathon</h2>
-        <div class="event-card">
-          <img src="assets/2172d2bb2837ab6ff6c8df6fa88d4872fc90ef65.png" alt="Event 1" class="event-image" />
+        <div class="event-block">
+          <h2 class="event-name">Ideathon</h2>
+          <div class="event-card">
+            <img src="assets/2172d2bb2837ab6ff6c8df6fa88d4872fc90ef65.png" alt="Ideathon" class="event-image" />
+          </div>
+          <div class="global-register-button-container">
+           <button id="Ideathon" class="register-btn1" onclick="window.location.href='errorpage.html'" data-event="Ideathon">
+  Register
+</button>
+
+          </div>
         </div>
 
       </div>
-    </div>
+    </section>
   </main>
 
+  <!-- Footer placeholder -->
   <footer>
     <div id="footer-placeholder"></div>
   </footer>
 
-  <!-- GSAP libraries for animation -->
+  <!-- GSAP (for future animations if needed) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 
-  <!-- Main JavaScript logic -->
+  <!-- Main Logic -->
+   
   <script src="script.js"></script>
 </body>
 </html>
