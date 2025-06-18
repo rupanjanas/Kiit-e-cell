@@ -248,7 +248,7 @@ border-radius: 25px;
 /* Hero Right Logo */
 .hero-right-logo {
     position: absolute;
-    right: -100px; /* Adjust as needed */
+    right: -200px; /* Adjust as needed */
     top: 50%;
     transform: translateY(-50%);
     display: flex;
