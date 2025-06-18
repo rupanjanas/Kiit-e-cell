@@ -172,10 +172,9 @@ function openLoginPopup() {
   }
 }
 function scrollToSection(event, id) {
-  event.preventDefault(); // Prevent default anchor jump
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
+    event.preventDefault(); // Prevent default anchor behavior
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   }
-}
-
