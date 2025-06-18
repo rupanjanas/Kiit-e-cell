@@ -100,6 +100,22 @@
       margin-bottom: 20px;
       display: none;
     }
+    .back-btn {
+      width: 207px;
+      height: 60px;
+      background: linear-gradient(90deg, #82a7ad 0%, #354547 65%);
+      border: 2px solid white;
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: transparent;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -121,8 +137,11 @@
 
       <div class="btn-wrapper">
         <button type="submit" class="svg-btn">Sign up</button>
-      </div>
+      </div>   
     </form>
+    <div class="btn-wrapper">
+      <a href="index.html"> <button class="back-btn">Back</button></a>
+     </div>
   </div>
 
   <!-- FIREBASE starts -->
