@@ -189,7 +189,7 @@ function handleRegister(button) {
   const eventName = button.getAttribute("data-event");
 
   if (eventName === "Ideathon") {
-    window.location.href = "error.html";
+    window.location.href = "errorpage.html";
   } else {
     openLoginPopup(); // assuming you already defined this elsewhere
   }
