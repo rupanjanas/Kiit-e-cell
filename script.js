@@ -171,3 +171,11 @@ function openLoginPopup() {
     document.body.style.overflow = ''; // re-enable scroll
   }
 }
+function scrollToSection(event, id) {
+  event.preventDefault(); // Prevent default anchor jump
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
