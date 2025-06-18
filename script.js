@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- Event image register button logic ---
   const globalRegisterButtonContainer = document.querySelector('.global-register-button-container');
-  const mainRegisterBtn = document.getElementById('mainRegisterBtn');
+  const mainRegisterBtn = document.getElementsByClassName('register-btn');
   const blurOverlay = document.getElementById('blurOverlay');
   let isRegisterButtonVisible = false;
 
@@ -62,7 +62,12 @@ document.addEventListener('DOMContentLoaded', function () {
   if (mainRegisterBtn) {
     mainRegisterBtn.addEventListener('click', function (event) {
       event.stopPropagation();
-      alert('Register Button Clicked!');
+        const eventName = mainRegisterBtn.getAttribute("data-event").trim().toLowerCase();
+        if (eventName === "ideathon") {
+          window.location.href = "errorpage.html";
+        } else {
+          openLoginPopup();
+        }
     });
   }
 
@@ -122,7 +127,7 @@ function openLoginPopup() {
 function handleRegister(button) {
   const eventName = button.getAttribute("data-event").trim().toLowerCase();
 
-  if (eventName === "Ideathon") {
+  if (eventName === "ideathon") {
     window.location.href = "errorpage.html";
   } else {
     openLoginPopup();
