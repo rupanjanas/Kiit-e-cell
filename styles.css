@@ -970,7 +970,6 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
     background: none; /* No background */
     border: none; /* No default border */
     border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5); /* The underline */
-    color: #fff; /* Input text color */
     font-size: 1.25rem; /* 20px, closer to the 24px in mockup but scales with rem */
     outline: none; /* Remove outline on focus */
     transition: border-color 0.3s ease; /* Smooth underline color change */
@@ -981,7 +980,6 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
     background: none; /* No background */
     border: none; /* No default border */
     border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5); /* The underline */
-    color: #fff; /* Input text color */
     font-size: 1.25rem; /* 20px, closer to the 24px in mockup but scales with rem */
     outline: none; /* Remove outline on focus */
     transition: border-color 0.3s ease; /* Smooth underline color change */
