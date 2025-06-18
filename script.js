@@ -1,178 +1,163 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // --- Navbar loader ---
- const navbarPlaceholder = document.getElementById('navbar-placeholder');
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Navbar loader ---
+    const navbarPlaceholder = document.getElementById('navbar-placeholder');
+    if (navbarPlaceholder) {
+        fetch('Navbar.html') // Ensure this path and filename are correct ('Navbar.html' vs 'navbar.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response for Navbar.html was not ok: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(html => {
+                navbarPlaceholder.innerHTML = html;
 
-if (navbarPlaceholder) {
-  fetch('Navbar.html')
-    .then(response => {
-      if (!response.ok) throw new Error('Navbar fetch failed');
-      return response.text();
-    })
-    .then(html => {
-      navbarPlaceholder.innerHTML = html;
+                // Add hamburger menu toggle functionality after navbar is loaded
+                const hamburger = document.getElementById("hamburger");
+                const navLinks = document.getElementById("navLinks");
 
-      // Hamburger toggle logic
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.getElementById("navLinks");
-      if (hamburger && navLinks) {
-        hamburger.addEventListener("click", () => {
-          navLinks.classList.toggle("active");
-        });
-      }
-
-      // Handle Events link animation + redirect
-      const eventsLink = document.getElementById("eventsLink");
-      if (eventsLink) {
-        eventsLink.addEventListener("click", (e) => {
-          e.preventDefault();
-          document.body.classList.add("dissolve-out");
-          setTimeout(() => {
-            window.location.href = eventsLink.href;
-          }, 600); // Match CSS animation duration
-        });
-      }
-
-      // Optional: Apply style via JS (not recommended for static styles)
-      // eventsLink.style.color = "#ff6600"; 
-    })
-    .catch(error => console.error('Navbar error:', error));
-}
-
-
-  // --- Footer loader ---
-  const footerPlaceholder = document.getElementById('footer-placeholder');
-  if (footerPlaceholder) {
-    fetch('footer.html')
-      .then(response => {
-        if (!response.ok) throw new Error('Footer fetch failed');
-        return response.text();
-      })
-      .then(html => {
-        footerPlaceholder.innerHTML = html;
-      })
-      .catch(error => console.error('Footer error:', error));
-  }
-
-  // --- Event image register button logic ---
-  const globalRegisterButtonContainer = document.querySelector('.global-register-button-container');
-  const blurOverlay = document.getElementById('blurOverlay');
-  let isRegisterButtonVisible = false;
-
-  function showRegisterButton() {
-    if (globalRegisterButtonContainer) globalRegisterButtonContainer.classList.add('active');
-    if (blurOverlay) blurOverlay.classList.add('active');
-    isRegisterButtonVisible = true;
-  }
-
-  function hideRegisterButton() {
-    if (globalRegisterButtonContainer) globalRegisterButtonContainer.classList.remove('active');
-    if (blurOverlay) blurOverlay.classList.remove('active');
-    isRegisterButtonVisible = false;
-  }
-
-  const eventItems = document.querySelectorAll('.event-image');
-  eventItems.forEach(item => {
-    item.addEventListener('click', function () {
-      if (!isRegisterButtonVisible) showRegisterButton();
-    });
-  });
-
-  // --- Custom logic for Ideathon register button ---
-  const ideathonBtn = document.getElementById('ideathonRegisterBtn');
-  if (ideathonBtn) {
-    ideathonBtn.addEventListener('click', function (event) {
-      event.stopPropagation(); // Prevent hiding overlay or opening login popup
-      window.location.href = 'errorpage.html';
-    });
-  }
-
-  // --- Optional: Add similar handlers for other event buttons if needed ---
-  const otherRegisterButtons = document.querySelectorAll('.register-btn');
-  otherRegisterButtons.forEach(btn => {
-    btn.addEventListener('click', function (event) {
-      event.stopPropagation();
-      openLoginPopup();
-    });
-  });
-
-  document.addEventListener('click', function (event) {
-    if (isRegisterButtonVisible) {
-      const clickedElement = event.target;
-      const insideButton = globalRegisterButtonContainer.contains(clickedElement);
-      const onImage = Array.from(eventItems).some(item => item.contains(clickedElement));
-      if (!insideButton && !onImage) hideRegisterButton();
+                if (hamburger && navLinks) {
+                    hamburger.addEventListener("click", () => {
+                        navLinks.classList.toggle("active");
+                    });
+                }
+            })
+            .catch(error => console.error('Failed to load navbar:', error));
     }
-  });
+    // --- Footer loader ---
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (footerPlaceholder) {        
+        fetch('footer.html') // Ensure this path and filename are correct ('Footer.html' vs 'footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response for Footer.html was not ok: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(html => {
+                footerPlaceholder.innerHTML = html;
+            })
+            .catch(error => console.error('Failed to load footer:', error));
+    }
+            
+    // --- Global Register Button & Blur Overlay Logic ---
+    const globalRegisterButtonContainer = document.querySelector('.global-register-button-container');
+    const mainRegisterBtn = document.getElementById('mainRegisterBtn'); // Ensure this ID matches your HTML button
+    const blurOverlay = document.getElementById('blurOverlay'); // Select the blur overlay
+
+    let isRegisterButtonVisible = false; // Flag to track button visibility
+
+    // Function to show the button and blur
+    function showRegisterButton() {
+        if (globalRegisterButtonContainer) {
+            globalRegisterButtonContainer.classList.add('active');
+            isRegisterButtonVisible = true;
+        }
+        if (blurOverlay) {
+            blurOverlay.classList.add('active'); // Activate the blur overlay
+        }
+    }
+
+    // Function to hide the button and unblur
+    function hideRegisterButton() {
+        if (globalRegisterButtonContainer) {
+            globalRegisterButtonContainer.classList.remove('active');
+            isRegisterButtonVisible = false;
+        }
+        if (blurOverlay) {
+            blurOverlay.classList.remove('active'); // Deactivate the blur overlay
+        }
+    }
+
+    // --- Event Image Click Logic (to show global button and blur) ---
+    // Select the parent .event-item divs, as clicks on them are usually desired.
+    // If you explicitly only want clicks on the <img> tag itself, change to '.event-image'
+    const eventItems = document.querySelectorAll('.event-image');
+
+    eventItems.forEach(item => {
+        item.addEventListener('click', function() {
+            if (!isRegisterButtonVisible) { // Only show if not already visible
+                showRegisterButton();
+            }
+            // If the button is already visible, clicking another image won't hide it.
+        });
+    });
+
+    // --- What happens when the Main Register Button itself is clicked ---
+    if (mainRegisterBtn) {
+        mainRegisterBtn.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent this click from bubbling up to document and hiding the button immediately
+            openLoginPopup(); // Open the login popup
+        });
+    }
+
+    document.addEventListener('click', function(event) {
+        if (isRegisterButtonVisible) { // Only act if the button is currently visible
+            const clickedElement = event.target;
+
+            // Check if the click is inside the button container
+            // (i.e., on the button itself or any element within its container)
+            const isClickInsideButtonContainer = globalRegisterButtonContainer.contains(clickedElement);
+
+            // Check if the click is on any of the event images/cards
+            // (i.e., on an .event-item div or any element within an .event-item)
+            const isClickOnEventItem = Array.from(eventItems).some(item => item.contains(clickedElement));
+
+            // If the click was NOT inside the button/its container
+            // AND was NOT on an event image/card, then hide
+            if (!isClickInsideButtonContainer && !isClickOnEventItem) {
+                hideRegisterButton();
+            }
+        }
+    });
 });
+function animateAndRedirectTo(link) {
+  document.body.classList.add('fade-out');
 
-// ✅ These functions must be declared outside DOMContentLoaded to be globally accessible
+  // Delay based on the animation duration
+  setTimeout(() => {
+    window.location.href = link;
+  }, 600); // Adjust the delay to match your CSS animation duration (600ms in this case)
+}
 function openLoginPopup() {
-  document.body.style.overflow = 'hidden';
-
+  // Create the popup container
   const popupContainer = document.createElement('div');
   popupContainer.className = 'popup-container';
-  popupContainer.addEventListener('click', (e) => {
-    if (e.target === popupContainer) closePopup();
-  });
 
+  // Create the popup content
   const popupContent = document.createElement('div');
   popupContent.className = 'popup-content';
 
+  // Add a close button
   const closeButton = document.createElement('span');
   closeButton.className = 'close-button';
   closeButton.innerHTML = '&times;';
-  closeButton.onclick = closePopup;
+  closeButton.onclick = function () {
+    document.body.removeChild(popupContainer);
+  };
 
+  // Append close button immediately (before loading)
+  popupContent.appendChild(closeButton);
+
+  // Fetch the actual login.html content and inject into popup
   fetch('login.html')
-    .then(response => response.text())
-    .then(html => {
-      const temp = document.createElement('div');
-      temp.innerHTML = html;
-      const innerHTML = temp.querySelector('body')?.innerHTML || html;
-
-      popupContent.innerHTML = innerHTML;
-      popupContent.appendChild(closeButton);
-
-      popupContainer.appendChild(popupContent);
-      document.body.appendChild(popupContainer);
+    .then(response => {
+      if (!response.ok) throw new Error('Failed to load login.html');
+      return response.text();
     })
-    .catch(error => {
-      console.error('Error loading login.html:', error);
-      alert('Login popup failed to load.');
-      document.body.style.overflow = '';
+    .then(html => {
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = html;
+      popupContent.appendChild(wrapper);
+    })
+    .catch(err => {
+      const errorMsg = document.createElement('p');
+      errorMsg.textContent = 'Error loading login form.';
+      popupContent.appendChild(errorMsg);
+      console.error(err);
     });
 
-  function closePopup() {
-    popupContainer.remove();
-    document.body.style.overflow = '';
-  }
+  // Append content to the container and container to body
+  popupContainer.appendChild(popupContent);
+  document.body.appendChild(popupContainer);
 }
-
-function handleRegister() {
-  window.location.href = "errorpage.html";
-}
-
-function scrollToSection(event, id) {
-  event.preventDefault();
-
-  const target = document.getElementById(id);
-  if (!target) return;
-
-  const y = target.getBoundingClientRect().top + window.scrollY;
-
-  gsap.to(window, {
-    duration: 1.5,
-    scrollTo: y,
-    ease: "elastic.out(1, 0.3)" // mimics spring-like motion
-  });
-}
-function animateAndRedirectTo(url) {
-  // Apply the dissolve animation to the entire body
-  document.body.classList.add('dissolve-out');
-
-  // Wait for animation to finish, then redirect
-  setTimeout(() => {
-    window.location.href = url;
-  }, 600); // match duration
-}
-
