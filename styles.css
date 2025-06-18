@@ -130,7 +130,6 @@ nav a {
   position: relative;
   width: 100%;
   height: 90vh; /* Adjust height as needed, e.g., 80vh for 80% of viewport height */
-  background: linear-gradient(252.44deg, #B3E6EE 0%, #203A43 50%, #2C5364 100%);
   display: flex;
   flex-direction: column;
   justify-content: center; /* Center content vertically */
@@ -304,6 +303,7 @@ border-radius: 25px;
 
 .about-us-section .section-title {
   margin-bottom: 60px;
+  background-color: #7d7d7d;
 }
 
 .about-content {
@@ -689,20 +689,7 @@ filter: blur(70px);
     font-size: 12px;
   }
 }
-.header-background{
-    /* Rectangle 19 */
 
-position: relative;
-width: 100%;
-height: 120px;
-left: 0px;
-top: 0px;
-background: linear-gradient(252.44deg, #B3E6EE 0%, #203A43 50%, #2C5364 100%);
--webkit-backdrop-filter: blur(40px);
-backdrop-filter: blur(40px);
-border-image: linear-gradient to bottom(252.44deg, #B3E6EE 0%, #203A43 50%, #2C5364 100%) 1;
-
-}
 
 .events-title{
 font-family: Porter Sans Block;
@@ -1167,6 +1154,7 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
   align-content: center;
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }
 #contact{
   font-family: Montserrat;
@@ -1231,6 +1219,10 @@ body.fade-out {
 @keyframes fadeIn {
   from { opacity: 0; } 
   to { opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 @keyframes popIn {
