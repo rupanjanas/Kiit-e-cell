@@ -122,36 +122,52 @@ function animateAndRedirect(link) {
   }, 600); // Adjust the delay to match your CSS animation duration (600ms in this case)
 }
 function openLoginPopup() {
-  // Create the popup container
+  // Prevent scrolling in the background
+  document.body.style.overflow = 'hidden';
+
+  // Create the popup overlay
   const popupContainer = document.createElement('div');
   popupContainer.className = 'popup-container';
 
-  // Create the popup content box
+  // Close popup on click outside
+  popupContainer.addEventListener('click', (e) => {
+    if (e.target === popupContainer) {
+      closePopup();
+    }
+  });
+
+  // Create popup content box
   const popupContent = document.createElement('div');
   popupContent.className = 'popup-content';
 
-  // Add a close button
+  // Add close button
   const closeButton = document.createElement('span');
   closeButton.className = 'close-button';
   closeButton.innerHTML = '&times;';
-  closeButton.onclick = function () {
-    document.body.removeChild(popupContainer);
-  };
+  closeButton.onclick = closePopup;
 
-  // Load login.html content
+  // Load login.html
   fetch('login.html')
     .then(response => response.text())
     .then(html => {
-      popupContent.innerHTML = html;
+      // Strip outer HTML/body/head if present
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+
+      const innerHTML = temp.querySelector('body')?.innerHTML || html;
+      popupContent.innerHTML = innerHTML;
       popupContent.appendChild(closeButton);
+
       popupContainer.appendChild(popupContent);
       document.body.appendChild(popupContainer);
     })
     .catch(error => {
       console.error('Error loading login.html:', error);
     });
+
+  // Close and clean up
+  function closePopup() {
+    document.body.removeChild(popupContainer);
+    document.body.style.overflow = ''; // re-enable scroll
+  }
 }
-
-
-
-
