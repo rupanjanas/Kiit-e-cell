@@ -6,6 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <title>Sign Up</title>
   <style>
+
     body {
       margin: 0;
       padding: 0;
@@ -144,16 +145,18 @@
      </div>
   </div>
 
-  <!-- FIREBASE starts -->
+  <!-- FIREBASE authentication for sign up page -->
 
 
   <script type="module">
+
 
     // imported functions from sdk
 
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
 
     // config and api keys
 
@@ -166,6 +169,7 @@
       messagingSenderId: "715253053686",
       appId: "1:715253053686:web:6ff51656cdb16a46dd94d7"
     };
+
 
     // Firebase initialized
 
@@ -200,6 +204,7 @@
         document.getElementById('password-error').style.display = 'block';
         return;
       }
+      
       
       // Validate password match
 
