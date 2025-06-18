@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +20,7 @@
 
         <!-- I camp -->
         <div class="global-register-button-container">
-          <button class="register-btn" onclick="handleRegister(this)" data-event="I camp">Register</button>
+          <button id="mainRegisterBtn" class="register-btn">Register</button>
         </div>
         <h2 class="event-name">I camp</h2>
         <div class="event-card">
@@ -31,7 +30,7 @@
 
         <!-- Build School -->
         <div class="global-register-button-container">
-          <button class="register-btn" onclick="handleRegister(this)" data-event="Build School">Register</button>
+          <button class="register-btn">Register</button>
         </div>
         <h2 class="event-name">Build School</h2>
         <div class="event-card">
@@ -41,7 +40,7 @@
 
         <!-- Skill Sprint -->
         <div class="global-register-button-container">
-          <button class="register-btn" onclick="handleRegister(this)" data-event="Skill Sprint">Register</button>
+          <button class="register-btn">Register</button>
         </div>
         <h2 class="event-name">Skill Sprint</h2>
         <div class="event-card">
@@ -53,7 +52,7 @@
 
         <!-- Ideathon -->
         <div class="global-register-button-container">
-          <button class="register-btn" onclick="handleRegister(this)" data-event="Ideathon">Register</button>
+          <button id="ideathonRegisterBtn" class="register-btn1" data-event="Ideathon">Register</button>
         </div>
         <h2 class="event-name">Ideathon</h2>
         <div class="event-card">
@@ -66,9 +65,13 @@
 
   <footer>
     <div id="footer-placeholder"></div>
-  </footer>   
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>   
-    <script src="script.js"></script>
-  </body>
+  </footer>
+
+  <!-- GSAP libraries for animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+  <!-- Main JavaScript logic -->
+  <script src="script.js"></script>
+</body>
 </html>
