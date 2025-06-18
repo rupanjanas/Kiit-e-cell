@@ -1046,7 +1046,7 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
 .contact-submit-btn {
     display: flex; /* Use flex to center text */
     align-items: center; /* Vertically center text */
-    justify-content: right; /* Align text to the right */
+    justify-content: center; /* Align text to the right */
     width: 200px; /* 300px width for the button */
     height: 4.875rem; /* 78px from Anima code */
     background: linear-gradient(129deg, rgba(130, 167, 173, 1) 0%, rgba(53, 69, 71, 1) 65%); /* Gradient from your Anima code */
