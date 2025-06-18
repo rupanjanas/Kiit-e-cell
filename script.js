@@ -167,4 +167,10 @@ function openLoginPopup() {
   // Append content to the container and container to body
   popupContainer.appendChild(popupContent);
   document.body.appendChild(popupContainer);
+
+     popupContainer.addEventListener('click', function (event) {
+    if (!popupContent.contains(event.target)) {
+      document.body.removeChild(popupContainer);
+    }
+  });
 }
