@@ -866,7 +866,305 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
         width: 140px;
     }
 }
+.contact-container {
+    display: flex; /* Enables Flexbox for side-by-side layout */
+    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+    justify-content: center; /* Centers the items horizontally within the container */
+    align-items: flex-start; /* Aligns items to the top of the flex container */
+    max-width: 75rem; /* Maximum width for the entire contact component (1200px) */
+    margin: 0 auto; /* Centers the contact component on the page */
+    gap: 2.5rem; /* Space between the image area and the form area (40px) */
+     filter: url(#noiseFilter);
+}
 
+/* --- Left Image Area Styles --- */
+.contact-image-area {
+    flex-shrink: 0; /* Prevents the image area from shrinking */
+    width: 21.875rem; /* Fixed width for the image container (350px) */
+    height: 21.875rem; /* Fixed height for a square shape (350px) */
+    background-color: #f2f2f2; /* Light gray background as seen in image_494b62.jpg */
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0,0,0,0.3); /* Subtle shadow */
+    display: flex; /* Use flexbox to center the logo inside */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures the logo stays within bounds if it's too big */
+}
+
+.contact-image-area img {
+    max-width: 80%; /* Logo takes up 80% of its container's width */
+    max-height: 80%; /* Logo takes up 80% of its container's height */
+    object-fit: contain; /* Scales logo to fit, maintaining aspect ratio */
+}
+
+/* --- Right Contact Form Area Styles --- */
+.contact-form-area {
+    flex-grow: 1; /* Allows the form area to take up available space */
+    max-width: 43.75rem; /* Maximum width for the form area itself (700px) */
+    background-color: #2a2a2a; /* Dark background matching your design */
+    border: 0.0625rem solid #ffffff; /* Thin white border from your design */
+    padding: 2.5rem; /* 40px */
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0,0,0,0.3);
+}
+
+.contact-form-area h1 {
+    font-size: 3.75rem; /* 60px, adjust as needed to match "Contact Us" title size */
+    color: #ffffff;
+    margin-bottom: 1.875rem; /* 30px */
+    text-align: center; /* Aligns "Contact Us" title */
+
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column; /* Stacks the main content and button vertically */
+}
+
+/* New Flexbox container for inputs and contact details */
+.contact-form .form-main-content {
+    display: flex; /* Arrange input group and info group side-by-side */
+    flex-wrap: wrap; /* Allow wrapping on smaller inner screens */
+    gap: 1.875rem; /* 30px space between columns */
+    justify-content: space-between; /* Push columns to ends, distributing space */
+    align-items: flex-start; /* Align content to the top */
+    width: 100%; /* Ensure it takes full width of its parent form */
+}
+
+.contact-form .form-inputs-group {
+    flex: 1; /* Allows inputs to take up more space (e.g., 2/3) */
+    min-width: 17.5rem; /* Minimum width before wrapping (280px) */
+}
+
+.contact-form .contact-info-buttons-group {
+    flex: 1; /* Allows info/buttons to take up less space (e.g., 1/3) */
+    min-width: 12.5rem; /* Minimum width before wrapping (200px) */
+    display: flex;
+    flex-direction: column; /* Stack details, social, and button vertically */
+    justify-content: space-between; /* Distribute space vertically */
+    height: 100%; /* Ensure it fills height available by form-inputs-group */
+}
+
+/* Form Group (for input fields) */
+.contact-form .form-group {
+    margin-bottom: 1.5625rem; /* 25px */
+    position: relative; /* Needed for the floating label effect */
+}
+
+/* Floating Label for Inputs */
+.contact-form label {
+    position: relative;
+    top: 0.625rem; /* 10px */
+    left: 0;
+    font-size: 1.125rem; /* 18px */
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.2s ease-out;
+    pointer-events: none; /* Allows clicks to pass through to the input */
+    margin-bottom: 800px;
+}
+
+/* Input and Textarea Base Styles */
+.contact-form input[type="text"],
+.contact-form input[type="email"] {
+    width: 100%;
+    padding: 10px; /* 10px 0 */
+    background: none; /* No background */
+    border: none; /* No default border */
+    border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5); /* The underline */
+    color: #fff; /* Input text color */
+    font-size: 1.25rem; /* 20px, closer to the 24px in mockup but scales with rem */
+    outline: none; /* Remove outline on focus */
+    transition: border-color 0.3s ease; /* Smooth underline color change */
+}
+.contact-form textarea {
+    width: 100%;
+    padding-top: 100px; /* 10px 0 */
+    background: none; /* No background */
+    border: none; /* No default border */
+    border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5); /* The underline */
+    color: #fff; /* Input text color */
+    font-size: 1.25rem; /* 20px, closer to the 24px in mockup but scales with rem */
+    outline: none; /* Remove outline on focus */
+    transition: border-color 0.3s ease; /* Smooth underline color change */
+    position: relative; /* Needed for the floating label effect */
+    box-sizing: border-box; /* Ensures padding is included in width */
+    top: 40px;
+}
+
+/* Floating Label Effect: Moves label up when input is focused or has content */
+.contact-form input:focus + label,
+.contact-form input:not(:placeholder-shown) + label,
+.contact-form textarea:focus ,
+.contact-form textarea:not(:placeholder-shown) + label {
+/* -15px */
+    font-size: 0.75rem; /* 12px *
+    color: #0072FF; /* Accent color for focused label */
+}
+
+/* Input/Textarea Focus Underline Color */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-bottom-color: #0072FF; /* Accent color for underline on focus */
+}
+
+/* Specific Styles for the Message Textarea */
+.contact-form .message-group textarea {
+    border: 0.0625rem solid #ffffff; /* Full border for message box */
+    border-radius: 1.5625rem 1.5625rem 0 0; /* 25px top corners, 0 bottom. Refined based on image. */
+    height: 10.4375rem; /* Approx. 167px from anima code (overlap-3 height), adjust if needed */
+    resize: vertical; /* Allow vertical resizing by user */
+    padding: 1.25rem; /* 20px padding inside the message box */
+    padding-bottom: 0; /* No bottom padding so line sits at bottom */
+}
+/* Adjust label for textarea to align with its padding */
+.contact-form .message-group label {
+    
+    margin-bottom: 1000px; /* 20px padding to match textarea padding */
+    
+}
+
+
+/* --- Contact Info and Social Icons Layout --- */
+.contact-details {
+    margin-bottom: 1.875rem; /* 30px space between contact details and social icons */
+    line-height: 1.6;
+    padding-left: 100px; /* 10px padding to match design */
+}
+
+.contact-details p {
+    margin-bottom: 0.3125rem; /* 5px */
+    font-size: 1rem; /* 16px */
+}
+
+.contact-details p strong {
+    color: #ffffff; /* White color as in design */
+    font-size: 1.5rem; /* 24px as in design */
+    margin-bottom: 0.3125rem; /* 5px */
+    display: block; /* Make strong tag a block for better spacing */
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 0.9375rem; /* 15px space between icons */
+    margin-bottom: 1.875rem; /* 30px space between social icons and the button */
+    justify-content: flex-start; /* Aligned left as in design */
+    padding-left: 40px; /* 20px padding to match design */
+}
+
+.social-icons a img {
+    width: 3.125rem; /* 50px size of social media icons */
+    height: 3.125rem; 
+    transition: transform 0.3s ease, filter 0.3s ease, border-color 0.3s ease; /* Smooth hover effects */
+}
+
+/* --- Submit Button --- */
+.contact-submit-btn {
+    display: flex; /* Use flex to center text */
+    align-items: center; /* Vertically center text */
+    justify-content: right; /* Align text to the right */
+    width: 200px; /* 300px width for the button */
+    height: 4.875rem; /* 78px from Anima code */
+    background: linear-gradient(129deg, rgba(130, 167, 173, 1) 0%, rgba(53, 69, 71, 1) 65%); /* Gradient from your Anima code */
+    color: #ffffff;
+    border: none; /* No explicit border, gradient handles it */
+    border-radius: 1.5625rem; /* 25px */
+    font-family: "Montserrat", Helvetica; /* Font from your Anima code */
+    font-size: 2rem; /* 32px */
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.18rem; /* 2.88px */
+    line-height: 1.15; /* Adjust line-height to match 36.8px for 32px font-size */
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase; /* Match uppercase from design */
+    position: relative; /* For hover effects */
+    align-self: flex-end;
+}
+
+
+/* --- Responsive Adjustments for Mobile --- */
+@media (max-width: 900px) { /* Main layout stacking breakpoint */
+    .contact-container {
+        flex-direction: column; /* Stacks image and form vertically */
+        align-items: center; /* Centers items horizontally when stacked */
+        gap: 2rem; /* Reduce gap on mobile */
+    }
+
+    .contact-image-area {
+        width: 18.75rem; /* 300px */
+        height: 18.75rem; /* 300px */
+    }
+
+    .contact-form-area {
+        max-width: 90%; /* Allow form to take more width on smaller screens */
+        padding: 1.875rem; /* 30px */
+    }
+
+    .contact-form-area h1 {
+        font-size: 2.5rem; /* 40px */
+        margin-bottom: 1.25rem; /* 20px */
+        padding-top: 20px; /* Add some top padding for spacing */
+        position: relative;
+    }
+}
+
+@media (max-width: 768px) { /* Inner form layout stacking breakpoint */
+    .contact-form .form-main-content {
+        flex-direction: column; /* Stack form inputs and contact details vertically */
+        align-items: center; /* Center them when stacked */
+        gap: 1.5rem; /* 24px */
+    }
+
+    .contact-form .form-inputs-group,
+    .contact-form .contact-info-buttons-group {
+        width: 100%; /* Take full width when stacked */
+        min-width: unset; /* Remove min-width constraint when stacked */
+        text-align: center; /* Center text content in this group */
+    }
+
+    .social-icons {
+        justify-content: center; /* Center social icons when stacked */
+        margin-top: 1.25rem; /* 20px */
+    }
+    
+    .contact-details {
+        margin-top: 1.25rem; /* 20px */
+        margin-bottom: 1.25rem; /* Adjust as needed */
+        margin-left: 1.25rem; /* 20px */
+    }
+}
+
+@media (max-width: 500px) { /* Smaller mobile screens */
+    .contact-us-section {
+        padding: 2.5rem 0.9375rem; /* 40px 15px */
+    }
+
+    .contact-image-area {
+        width: 15.625rem; /* 250px */
+        height: 15.625rem; /* 250px */
+    }
+
+    .contact-form-area {
+        padding: 1.25rem; /* 20px */
+    }
+
+    .contact-form-area h1 {
+        font-size: 2rem; /* 32px */
+        margin-bottom: 1rem; /* 16px */
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-submit-btn {
+        font-size: 1rem; /* 16px */
+        padding: 0.75rem 0; /* 12px 0 */
+    }
+    
+    .contact-submit-btn {
+        font-size: 1.5rem; /* 24px */
+        padding: 0.9375rem; /* 15px */
+    }
+}
 
 
 
