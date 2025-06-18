@@ -24,7 +24,11 @@
     text-align: center;
     padding: 20px;
     position: relative;
-    z-index: 1;
+    display: flex;
+  flex-direction: column;
+     justify-content: center; /* vertically centers */
+  align-items: center;  
+    
   }
     .container h1{
     font-family: "Poppins";
@@ -67,12 +71,15 @@
     width:580px;
     height:321px;
     margin-top: 0px;
-    margin-bottom: -80px;}
+    margin-bottom: -80px;
+    
+}
     .scale-wrapper {
   transform: scale(0.7); /* or try 0.9 or 0.8 */
   transform-origin: top center;
   width:100%;
   height:100%;
+  align-content: center;
 }
 .login-button {
   float: right;
@@ -113,7 +120,7 @@
   <div class="container">
     <h1>Oops !!!</h1>
     <div>
-    <img src="assets/404 image.svg" alt="404"/></div>
+    <img src="assets/404.png" alt="404"/></div>
     <p>There’s NOTHING here...</p>
     <a onclick="window.location.href='events.html'" style="display: inline-block; cursor: pointer; line-height: 0;" class="back-button">
         <svg width="207" height="78" viewBox="0 0 207 78" fill="none" xmlns="http://www.w3.org/2000/svg">
