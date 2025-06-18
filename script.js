@@ -77,16 +77,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // ✅ These functions must be declared outside DOMContentLoaded to be globally accessible
-function handleRegister(button) {
-  const eventName = button.getAttribute("data-event").trim().toLowerCase();
-
-  if (eventName === "ideathon") {
-    window.location.href = "errorpage.html";
-  } else {
-    openLoginPopup();
-  }
-}
-
 function openLoginPopup() {
   document.body.style.overflow = 'hidden';
 
@@ -128,3 +118,14 @@ function openLoginPopup() {
     document.body.style.overflow = '';
   }
 }
+
+function handleRegister(button) {
+  const eventName = button.getAttribute("data-event").trim().toLowerCase();
+
+  if (eventName === "ideathon") {
+    window.location.href = "errorpage.html";
+  } else {
+    openLoginPopup();
+  }
+}
+
