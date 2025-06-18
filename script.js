@@ -181,3 +181,13 @@ function openLoginPopup() {
     }
   });
 }
+function animateAndRedirectTo(url) {
+  document.body.classList.add("fade-out");
+  setTimeout(() => {
+    window.location.href = url;
+  }, 600); // Match CSS duration
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("fade-in");
+});
