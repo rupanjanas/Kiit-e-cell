@@ -7,66 +7,116 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    
-     <div class="header-background">
-       <header>
+
+    <div class="header-background">
+      <header>
         <div id="navbar-placeholder"></div>
       </header>
-      </div>
-  <main>
-        <section class="contact-us-section">
-            <div class="contact-container">
-                <div class="contact-image-area">
-                    <img src="assets/6043b9c69e35130d470f5c3df89711dfc861daa7.png" alt="KIIT Entrepreneurship Cell Logo">
+    </div>
+
+    <main>
+      <section class="contact-us-section">
+        <div class="contact-container">
+          <div class="contact-image-area">
+            <img src="assets/6043b9c69e35130d470f5c3df89711dfc861daa7.png" alt="KIIT Entrepreneurship Cell Logo">
+          </div>
+
+          <div class="contact-form-area">
+            <h1>Contact Us</h1>
+            <form class="contact-form">
+              <div class="form-main-content">
+                <div class="form-inputs-group">
+                  <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder=" " required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder=" " required>
+                  </div>
+                  <div class="form-group message-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Type your message here..." rows="4" required></textarea>
+                  </div>
                 </div>
 
-                <div class="contact-form-area">
-                    <h1>Contact Us</h1>
-                    <form class="contact-form">
-                        <div class="form-main-content">
-                            <div class="form-inputs-group">
-                                <div class="form-group">
-                                    <label for="fullName">Full Name</label>
-                                    <input type="text" id="fullName" name="fullName" placeholder=" " required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">E-mail</label>
-                                    <input type="email" id="email" name="email" placeholder=" " required>
-                                </div>
-                                <div class="form-group message-group">
-                                    <label for="message">Message</label>
-                                    <textarea id="message" name="message" placeholder="Type your message here..." rows="4" required></textarea>
-                                </div>
-                            </div>
-
-                            <div class="contact-info-buttons-group">
-                                <div class="contact-details">
-                                    <p><strong>Contact</strong></p>
-                                    <p>support@ecell.com</p>
-                                    <p><strong>Based in</strong></p>
-                                    <p>KIIT University</p>
-                                    <p>Bhubaneswar, India</p>
-                                </div>
-                                <div class="social-icons">
-                                    <a href="https://www.linkedin.com/company/kiit-e-cell/"><img src="assets/9f6540276f4a50d2c7311c310a6aebe05e03c19d.png" alt="LinkedIn"></a>
-                                    <a href="https://www.instagram.com/ecell_kiit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img src="assets/1c5dcff80ccba862a915805358949e78911bc8ff.png" alt="Instagram"></a>
-                                    <a href="https://www.youtube.com/@KIIT-ECELL"><img src="assets/c083b15d9f7d69a43ffb61c34e278218d3331f87.png" alt="YouTube"></a>
-                                    <a href="https://www.facebook.com/kiitecell/"><img src="assets/13c99c95e1789a256f7722c9f384dab9abbf9b71.png" alt="Facebook"></a>
-                                </div>
-                                <button type="submit" class="contact-submit-btn">Contact</button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="contact-info-buttons-group">
+                  <div class="contact-details">
+                    <p><strong>Contact</strong></p>
+                    <p>support@ecell.com</p>
+                    <p><strong>Based in</strong></p>
+                    <p>KIIT University</p>
+                    <p>Bhubaneswar, India</p>
+                  </div>
+                  <div class="social-icons">
+                    <a href="https://www.linkedin.com/company/kiit-e-cell/"><img src="assets/9f6540276f4a50d2c7311c310a6aebe05e03c19d.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/ecell_kiit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img src="assets/1c5dcff80ccba862a915805358949e78911bc8ff.png" alt="Instagram"></a>
+                    <a href="https://www.youtube.com/@KIIT-ECELL"><img src="assets/c083b15d9f7d69a43ffb61c34e278218d3331f87.png" alt="YouTube"></a>
+                    <a href="https://www.facebook.com/kiitecell/"><img src="assets/13c99c95e1789a256f7722c9f384dab9abbf9b71.png" alt="Facebook"></a>
+                  </div>
+                  <button type="submit" class="contact-submit-btn">Contact</button>
                 </div>
-            </div>
-        </section>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-    <div id="footer-placeholder"></div>
+      <div id="footer-placeholder"></div>
     </footer>
-</body>
-</html>
+
+    <!-- Firebase Firestore Integration -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDFsxNmiaIr9osXoldaOR_jGPIQYR4QYNA",
+        authDomain: "kiit-login-system.firebaseapp.com",
+        projectId: "kiit-login-system",
+        storageBucket: "kiit-login-system.appspot.com",
+        messagingSenderId: "715253053686",
+        appId: "1:715253053686:web:6ff51656cdb16a46dd94d7"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const form = document.querySelector('.contact-form');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!fullName || !email || !message) {
+          alert('Please fill in all fields.');
+          return;
+        }
+
+        try {
+          await addDoc(collection(db, "contactMessages"), {
+            fullName,
+            email,
+            message,
+            timestamp: new Date()
+          });
+
+          alert('Your message has been submitted successfully!');
+          form.reset();
+        } catch (error) {
+          console.error("Error adding message: ", error);
+          alert("Submission failed. Please try again.");
+        }
+      });
+    </script>
+
+    <!-- Your external JS if any -->
     <script src="script.js"></script>
+
   </body>
 </html>
