@@ -1,29 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
     // --- Navbar loader ---
-    const navbarPlaceholder = document.getElementById('navbar-placeholder');
-    if (navbarPlaceholder) {
-        fetch('Navbar.html') // Ensure this path and filename are correct ('Navbar.html' vs 'navbar.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response for Navbar.html was not ok: ' + response.statusText);
-                }
-                return response.text();
-            })
-            .then(html => {
-                navbarPlaceholder.innerHTML = html;
+   const navbarPlaceholder = document.getElementById('navbar-placeholder');
 
-                // Add hamburger menu toggle functionality after navbar is loaded
-                const hamburger = document.getElementById("hamburger");
-                const navLinks = document.getElementById("navLinks");
+if (navbarPlaceholder) {
+  fetch('Navbar.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to load Navbar.html: ' + response.statusText);
+      }
+      return response.text();
+    })
+    .then(html => {
+      navbarPlaceholder.innerHTML = html;
 
-                if (hamburger && navLinks) {
-                    hamburger.addEventListener("click", () => {
-                        navLinks.classList.toggle("active");
-                    });
-                }
-            })
-            .catch(error => console.error('Failed to load navbar:', error));
-    }
+      // Wait for DOM insertion to complete
+      setupNavbarToggle();
+    })
+    .catch(error => console.error('Navbar load error:', error));
+}
+
+function setupNavbarToggle() {
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  } else {
+    console.warn("Hamburger or navLinks not found in loaded Navbar.");
+  }
+}
     // --- Footer loader ---
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {        
