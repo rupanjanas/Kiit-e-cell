@@ -98,3 +98,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+ // --- Footer loader ---
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (footerPlaceholder) {        
+        fetch('footer.html') // Ensure this path and filename are correct ('Footer.html' vs 'footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response for Footer.html was not ok: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(html => {
+                footerPlaceholder.innerHTML = html;
+            })
+            .catch(error => console.error('Failed to load footer:', error));
+    }
+function animateAndRedirect(link) {
+  document.body.classList.add('fade-out');
+
+  // Delay based on the animation duration
+  setTimeout(() => {
+    window.location.href = link;
+  }, 600); // Adjust the delay to match your CSS animation duration (600ms in this case)
+}
