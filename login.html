@@ -6,7 +6,7 @@
   <title>Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Firebase part starts here-->
+  <!-- Firebase for login-->
    
   <script type="module">
 
@@ -23,6 +23,7 @@
       signInWithEmailAndPassword
     } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
+    
     // fire base config and apis
 
     const firebaseConfig = {
@@ -35,6 +36,7 @@
     };
 
     // initializing Firebase
+
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
@@ -58,6 +60,7 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
     
     if (email.endsWith('@kiit.ac.in')) {
 
+
       // showing success message (no redirect...for now)
 
       console.log('Logged in successfully:', user);
@@ -67,7 +70,9 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
       document.getElementById('errorMessage').style.display = 'block';
     } else {
 
+
       //  Not a KIIT email
+
 
       await signOut(auth);
       document.getElementById('errorMessage').style.color = '#ff6b6b'; // red text
@@ -94,7 +99,9 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
     const user = result.user;
     const email = user.email;
 
+
     //  Allows any email and show success message and no redirect yet
+
 
     console.log('Logged in successfully with GitHub:', user);
     document.getElementById('errorMessage').style.color = '#00ff00'; // green text

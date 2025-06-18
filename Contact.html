@@ -75,11 +75,14 @@
     <div id="footer-placeholder"></div>
     </footer>
 
-    <!-- FIREBASE START -->
+    <!-- FIREBASE authentication for storing messages -->
+
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
       import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+
 
       const firebaseConfig = {
         apiKey: "AIzaSyDFsxNmiaIr9osXoldaOR_jGPIQYR4QYNA",
@@ -90,6 +93,8 @@
         appId: "1:715253053686:web:6ff51656cdb16a46dd94d7"
       };
 
+
+      
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
 
@@ -124,9 +129,9 @@
       });
     </script>
 
+
     <!-- FIREBASE END -->
 
-    
     <script src="script.js"></script>
 
   </body>
