@@ -171,10 +171,17 @@ function openLoginPopup() {
     document.body.style.overflow = ''; // re-enable scroll
   }
 }
-function scrollToSection(event, id) {
-    event.preventDefault(); // Prevent default anchor behavior
+ function springScrollTo(event, id) {
+    event.preventDefault();
+
     const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (!target) return;
+
+    const targetY = target.getBoundingClientRect().top + window.scrollY;
+
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: targetY,
+      ease: "elastic.out(1, 0.3)" // mimics spring
+    });
   }
