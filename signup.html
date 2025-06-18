@@ -85,29 +85,148 @@
       background: transparent;
       color: white;
     }
-       </style>
+    
+    .error {
+      color: #ff6b6b;
+      font-size: 0.8rem;
+      margin-top: -20px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    
+    .success {
+      color: #51cf66;
+      text-align: center;
+      margin-bottom: 20px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <div class="signup-container">
     <h2>Sign up</h2>
-    <form>
+    <div class="success" id="success-message">Account created successfully!</div>
+    <form id="signup-form">
       <label for="email">E-mail <span class="note">(Use KIIT email id)</span></label>
       <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@kiit\.ac\.in$" />
+      <div class="error" id="email-error">Please use a valid KIIT email address (@kiit.ac.in)</div>
 
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
+      <input type="password" id="password" name="password" required minlength="6" />
+      <div class="error" id="password-error">Password must be at least 6 characters</div>
 
       <label for="confirm-password">Confirm Password</label>
       <input type="password" id="confirm-password" name="confirm-password" required />
+      <div class="error" id="confirm-error">Passwords don't match</div>
 
       <div class="btn-wrapper">
         <button type="submit" class="svg-btn">Sign up</button>
-         
-        </button>
       </div>
     </form>
   </div>
+
+  <!-- FIREBASE starts -->
+
+
+  <script type="module">
+
+    // imported functions from sdk
+
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+    // config and api keys
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDFsxNmiaIr9osXoldaOR_jGPIQYR4QYNA",
+      authDomain: "kiit-login-system.firebaseapp.com",
+      projectId: "kiit-login-system",
+      storageBucket: "kiit-login-system.appspot.com",
+      messagingSenderId: "715253053686",
+      appId: "1:715253053686:web:6ff51656cdb16a46dd94d7"
+    };
+
+    // Firebase initialized
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Sign up form button
+
+    document.getElementById('signup-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Reset error messages
+
+      document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+      
+      // Get values from email and password fields
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      // Validate KIIT email
+
+      if (!email.endsWith('@kiit.ac.in')) {
+        document.getElementById('email-error').style.display = 'block';
+        return;
+      }
+      
+      // Validate password length
+
+      if (password.length < 6) {
+        document.getElementById('password-error').style.display = 'block';
+        return;
+      }
+      
+      // Validate password match
+
+      if (password !== confirmPassword) {
+        document.getElementById('confirm-error').style.display = 'block';
+        return;
+      }
+      
+      // Creating a new account/user
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+
+          // Signed up successfully
+
+          const user = userCredential.user;
+          console.log('User created:', user);
+          
+          // Show success message and clear form
+
+          document.getElementById('success-message').style.display = 'block';
+          document.getElementById('signup-form').reset();
+          
+          // Hide success message after 3 seconds
+
+          setTimeout(() => {
+            document.getElementById('success-message').style.display = 'none';
+          }, 3000);
+        })
+
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error('Error:', errorCode, errorMessage);
+          
+          // showing error msg
+
+          if (errorCode === 'auth/email-already-in-use') {
+            const emailError = document.getElementById('email-error');
+            emailError.textContent = 'This email is already registered';
+            emailError.style.display = 'block';
+          } else {
+            alert('Error creating account: ' + errorMessage);
+          }
+        });
+    });
+  </script>
 </body>
 </html>
-
-
