@@ -326,9 +326,10 @@ border-radius: 25px;
 
 .about-logos {
   display: flex;
-  flex-direction: column;
+  justify-content: center; /* or space-between / flex-start / flex-end */
   align-items: center;
-  gap: 30px;
+  gap: 20px; /* spacing between logos */
+  margin-top: 30px;
   filter: grayscale(100%); /* Make logos slightly gray */
 }
 
