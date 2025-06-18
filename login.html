@@ -210,18 +210,20 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
     }
     .container {
       background-color: #000;
-      padding: 60px 40px;
+      padding: 40px 20px;
       border-radius: 40px;
       max-width: 450px;
       width: 100%;
       text-align: center;
       border: 1px solid #82a7ad;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      padding-bottom:-40px;
     }
     h2 {
       font-size: 36px;
       margin-bottom: 40px;
       font-weight: 700;
+      margin-top:0px;
     }
     label {
       display: block;
@@ -302,6 +304,23 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
       margin-top: 10px;
       display: none;
     }
+    .back-btn {
+      width: 207px;
+      height: 60px;
+      background: linear-gradient(90deg, #82a7ad 0%, #354547 65%);
+      border: 2px solid white;
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top:10px;
+    }
+    .back-btn:hover {
+      background: transparent;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -315,8 +334,10 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
       <a class="forgot" href="#">Forgot Password?</a>
       <button type="submit" class="login-btn">Login</button>
     </form>
-
-    <p class="social-label">Login with social accounts</p>
+     <div class="btn-wrapper">
+      <a href="index.html"> <button class="back-btn">Back</button></a>
+     </div>
+      <p class="social-label">Login with social accounts</p>
     <div class="social-icons">
       <!-- Google -->
       <a id="googleLogin" href="#">
@@ -368,5 +389,6 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
       Don't have an account? <a href="signup.html">Sign Up</a>
     </div>
   </div>
+</div>
 </body>
 </html>
