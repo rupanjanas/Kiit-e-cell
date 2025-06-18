@@ -746,7 +746,7 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
   height: auto; /* Maintain aspect ratio */
   display: block; /* Removes extra space below images */
   object-fit: cover; /* Useful if you set a fixed height for images, crops them to fit */
-  border-radius: 8px; /* Optional: Soften image corners */
+  border-radius: 8px; /* Optional: Soften image corners */;
   
 }
 .event-image:hover{
@@ -875,7 +875,8 @@ flex: 1 1 auto; /* Allows images to grow and shrink, and have a base size */
     align-items: flex-start; /* Aligns items to the top of the flex container */
     max-width: 75rem; /* Maximum width for the entire contact component (1200px) */
     margin: 0 auto; /* Centers the contact component on the page */
-    gap: 2.5rem; /* Space between the image area and the form area (40px) *
+    gap: 2.5rem; /* Space between the image area and the form area (40px) */
+
 }
 
 /* --- Left Image Area Styles --- */
@@ -1253,7 +1254,6 @@ body.fade-out {
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 }
-}
 .popup-container {
   position: fixed;
   top: 0;
@@ -1284,4 +1284,8 @@ body.fade-out {
   font-size: 24px;
   cursor: pointer;
 }
-
+html {
+  scroll-behavior: smooth;
+  animation-duration: 600ms; /* Smooth scroll duration */
+  animation-fill-mode: both; /* Maintain end state after animation */
+}
