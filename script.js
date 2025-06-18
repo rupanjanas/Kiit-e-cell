@@ -128,7 +128,7 @@ function handleRegister(button) {
     openLoginPopup();
   }
 }
-function springScrollTo(event, id) {
+function scrollToSection(event, id) {
     event.preventDefault();
 
     const target = document.getElementById(id);
