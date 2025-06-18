@@ -5,6 +5,194 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Firebase part starts here-->
+   
+  <script type="module">
+
+    // imported functions
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { 
+      getAuth, 
+      GoogleAuthProvider,
+      GithubAuthProvider, 
+      signInWithPopup, 
+      signOut,
+      onAuthStateChanged,
+      signInWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+    // fire base config and apis
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDFsxNmiaIr9osXoldaOR_jGPIQYR4QYNA",
+      authDomain: "kiit-login-system.firebaseapp.com",
+      projectId: "kiit-login-system",
+      storageBucket: "kiit-login-system.firebasestorage.app",
+      messagingSenderId: "715253053686",
+      appId: "1:715253053686:web:6ff51656cdb16a46dd94d7"
+    };
+
+    // initializing Firebase
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    // google provider parameters
+
+    provider.setCustomParameters({
+      prompt: 'select_account'
+    });
+
+    // Button for google img click
+
+document.getElementById('googleLogin').addEventListener('click', async (e) => {
+  e.preventDefault();
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    const email = user.email;
+    
+    if (email.endsWith('@kiit.ac.in')) {
+
+      // showing success message (no redirect...for now)
+
+      console.log('Logged in successfully:', user);
+      document.getElementById('errorMessage').style.color = '#00ff00'; // green text
+      document.getElementById('errorMessage').textContent = 
+        'Successfully logged in with KIIT email: ' + email;
+      document.getElementById('errorMessage').style.display = 'block';
+    } else {
+
+      //  Not a KIIT email
+
+      await signOut(auth);
+      document.getElementById('errorMessage').style.color = '#ff6b6b'; // red text
+      document.getElementById('errorMessage').textContent = 
+        'Only KIIT email addresses (@kiit.ac.in) are allowed for login.';
+      document.getElementById('errorMessage').style.display = 'block';
+    }
+
+  } catch (error) {
+    console.error('Error during Google login:', error);
+    document.getElementById('errorMessage').style.color = '#ff6b6b'; // red text
+    document.getElementById('errorMessage').textContent = 
+      'Error during login: ' + error.message;
+    document.getElementById('errorMessage').style.display = 'block';
+  }
+});
+
+        // git hub Button action
+        
+  document.getElementById('githubLogin').addEventListener('click', async (e) => {
+  e.preventDefault();
+  try {
+    const result = await signInWithPopup(auth, githubProvider);
+    const user = result.user;
+    const email = user.email;
+
+    //  Allows any email and show success message and no redirect yet
+
+    console.log('Logged in successfully with GitHub:', user);
+    document.getElementById('errorMessage').style.color = '#00ff00'; // green text
+    document.getElementById('errorMessage').textContent = 
+      'Successfully logged in with GitHub email: ' + email;
+    document.getElementById('errorMessage').style.display = 'block';
+
+  } catch (error) {
+    console.error('Error during GitHub login:', error);
+    document.getElementById('errorMessage').style.color = '#ff6b6b'; // red text
+    document.getElementById('errorMessage').textContent = 
+      'Error during GitHub login: ' + error.message;
+    document.getElementById('errorMessage').style.display = 'block';
+  }
+});
+
+
+    // login though email and password
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  if (!email.endsWith('@kiit.ac.in')) {
+  document.getElementById('errorMessage').textContent = 
+    'Please use your KIIT email address (@kiit.ac.in) to login.';
+  document.getElementById('errorMessage').style.color = '#ff6b6b'; // red
+  document.getElementById('errorMessage').style.display = 'block';
+  return;
+}
+
+
+    try {
+  const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  const user = userCredential.user;
+
+  // Success message
+
+  document.getElementById('errorMessage').style.color = '#00ff00'; // green
+  document.getElementById('errorMessage').textContent = 
+    'Successfully logged in as: ' + user.email;
+  document.getElementById('errorMessage').style.display = 'block';
+
+  // Hide after 3 seconds
+
+  setTimeout(() => {
+    document.getElementById('errorMessage').style.display = 'none';
+  }, 3000);
+
+} catch (error) {
+
+  //  Error message
+
+  document.getElementById('errorMessage').style.color = '#ff6b6b'; // red
+  document.getElementById('errorMessage').textContent = 
+    'Login error: ' + error.message;
+  document.getElementById('errorMessage').style.display = 'block';
+
+  // Hide after 3 seconds
+
+  setTimeout(() => {
+    document.getElementById('errorMessage').style.display = 'none';
+  }, 3000);
+}
+
+
+});
+
+    // checking auth status if already loged in
+
+    onAuthStateChanged(auth, (user) => {
+  if (user && user.email) {
+    let message = '';
+
+    if (user.email.endsWith('@kiit.ac.in')) {
+      message = 'Already logged in with KIIT email: ' + user.email;
+    } else {
+      message = 'Already logged in with: ' + user.email;
+    }
+
+    const errorMsg = document.getElementById('errorMessage');
+    errorMsg.style.color = '#00ff00'; // green
+    errorMsg.textContent = message;
+    errorMsg.style.display = 'block';
+
+    // Hide after 3 seconds
+
+    setTimeout(() => {
+      errorMsg.style.display = 'none';
+    }, 3000);
+  }
+});
+
+
+// FIREBASE OVER
+
+  </script>
   <style>
     * {
       margin: 0;
@@ -108,16 +296,22 @@
       text-decoration: none;
       margin-left: 5px;
     }
+    .error-message {
+      color: #ff6b6b;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Login</h2>
-    <form>
+    <form id="loginForm">
       <label for="email">E-mail <span>(Use KIIT email id)</span></label>
-      <input type="email" id="email" placeholder="Enter your KIIT email"  pattern="[a-zA-Z0-9._%+-]+@kiit\.ac\.in$" />
+      <input type="email" id="email" placeholder="Enter your KIIT email" pattern="[a-zA-Z0-9._%+-]+@kiit\.ac\.in$" required />
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter your password" />
+      <input type="password" id="password" placeholder="Enter your password" required />
       <a class="forgot" href="#">Forgot Password?</a>
       <button type="submit" class="login-btn">Login</button>
     </form>
@@ -125,18 +319,18 @@
     <p class="social-label">Login with social accounts</p>
     <div class="social-icons">
       <!-- Google -->
-<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <rect width="20" height="20" fill="url(#pattern0_62_539)" />
-      <defs>
-        <pattern id="pattern0_62_539" patternContentUnits="objectBoundingBox" width="1" height="1">
-          <use xlink:href="#image0_62_539" transform="scale(0.02)" />
-        </pattern>
-        <image id="image0_62_539" width="50" height="50" preserveAspectRatio="none"
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACkElEQVR4nO2ZO2sVQRSARyVRBFHQoPgqxcZEG1HBIo1dyvisRQjaa4QoCD4KwUaj+AuMGCxMxMoHJI0YVGxERVALNSYSLDQG8snBIyxyd3ZnZ2bv3rAfXAiX7Dn3u3v2zMy5xtTU1NS4ACwGdgH9wB3gFTAN/Abm9G95b1j/Z49cY6oCsAm4CHzCHbnmksRopkAHcB2YxR+5a9ckZtkSh4EpwjMNHCpDoA24SXxuSK5YEsuBUcrhB7A91p1wlZgEXgAj+prQ9/JI7A0uoSJ5y+kNMAB0pcRZBOwATgMfypY4kkPgM9DnUtdAO3As0TSiSnTk6E5jwFrPdWg0moSg3cPGLWCpqTLAxozFbqzyEoJuO2zPROFyKnsD+NEi0mdaAWB3RouNs+qGRrfZaQyYVoG/54k0ugrE6w306nFNLAegRky6Smi8UMw5lbVlEXzeZBFhs0vitPXjfgVEti0Ukc6FUlpbQjzs3yogsjJU+3U+uRVos/0puWdCLohnTGSAcym5H7sGkkFbGm/lUBRRog14n5L7cpFNY6Oj6D+ORxQ5Ycm7r0jAC5aAX4B1ESTWWwYUM8CyGAer8ZAHKy2pJ5Z8gz7BB7EzFEJGvmngriXPvNecC1gja0eGzLhPmWk5PczIMVxYIpHoINl81Ye03bGUjgLfM2L/ArZ6i2hSmbrn4R1wVoZwlgFdJ3Aq4yid5GQQicS3J2NPF2S/9lJnVnLt0wIT/HvAkmAiiSG2q4wPE8CKoBL/3ZmsThaCR06bQw+hAzkn667MA1cKLXweMquBq9pVQvAM6C5NoIHQBuB8xt4sjVl9oHuko5kqoBvNndIugdv6I8+UftifOmZ9DTzQcex+YFWzP3dNTY1pLf4A+riKh7P3srgAAAAASUVORK5CYII=" />
-      </defs>
-    </svg>
-  </a>
+      <a id="googleLogin" href="#">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <rect width="20" height="20" fill="url(#pattern0_62_539)" />
+          <defs>
+            <pattern id="pattern0_62_539" patternContentUnits="objectBoundingBox" width="1" height="1">
+              <use xlink:href="#image0_62_539" transform="scale(0.02)" />
+            </pattern>
+            <image id="image0_62_539" width="50" height="50" preserveAspectRatio="none"
+              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACkElEQVR4nO2ZO2sVQRSARyVRBFHQoPgqxcZEG1HBIo1dyvisRQjaa4QoCD4KwUaj+AuMGCxMxMoHJI0YVGxERVALNSYSLDQG8snBIyxyd3ZnZ2bv3rAfXAiX7Dn3u3v2zMy5xtTU1NS4ACwGdgH9wB3gFTAN/Abm9G95b1j/Z49cY6oCsAm4CHzCHbnmksRopkAHcB2YxR+5a9ckZtkSh4EpwjMNHCpDoA24SXxuSK5YEsuBUcrhB7A91p1wlZgEXgAj+prQ9/JI7A0uoSJ5y+kNMAB0pcRZBOwATgMfypY4kkPgM9DnUtdAO3As0TSiSnTk6E5jwFrPdWg0moSg3cPGLWCpqTLAxozFbqzyEoJuO2zPROFyKnsD+NEi0mdaAWB3RouNs+qGRrfZaQyYVoG/54k0ugrE6w306nFNLAegRky6Smi8UMw5lbVlEXzeZBFhs0vitPXjfgVEti0Ukc6FUlpbQjzs3yogsjJU+3U+uRVos/0puWdCLohnTGSAcym5H7sGkkFbGm/lUBRRog14n5L7cpFNY6Oj6D+ORxQ5Ycm7r0jAC5aAX4B1ESTWWwYUM8CyGAer8ZAHKy2pJ5Z8gz7BB7EzFEJGvmngriXPvNecC1gja0eGzLhPmWk5PczIMVxYIpHoINl81Ye03bGUjgLfM2L/ArZ6i2hSmbrn4R1wVoZwlgFdJ3Aq4yid5GQQicS3J2NPF2S/9lJnVnLt0wIT/HvAkmAiiSG2q4wPE8CKoBL/3ZmsThaCR06bQw+hAzkn667MA1cKLXweMquBq9pVQvAM6C5NoIHQBuB8xt4sjVl9oHuko5kqoBvNndIugdv6I8+UftifOmZ9DTzQcex+YFWzP3dNTY1pLf4A+riKh7P3srgAAAAASUVORK5CYII=" />
+          </defs>
+        </svg>
+      </a>
   
 
       <!-- Twitter (X) -->
@@ -154,7 +348,7 @@
       </a>
 
       <!-- GitHub -->
-      <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
+      <a id="githubLogin" href="#">
         <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <rect width="20" height="20" fill="url(#pattern-google)" />
           <defs>
@@ -168,10 +362,11 @@
       </a>
     </div>
 
+    <div class="error-message" id="errorMessage"></div>
+    
     <div class="signup">
-      Don’t have an account? <a href="#">Sign Up</a>
+      Don't have an account? <a href="#">Sign Up</a>
     </div>
   </div>
 </body>
 </html>
-
