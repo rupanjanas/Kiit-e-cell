@@ -128,4 +128,17 @@ function handleRegister(button) {
     openLoginPopup();
   }
 }
+function springScrollTo(event, id) {
+    event.preventDefault();
 
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    const y = target.getBoundingClientRect().top + window.scrollY;
+
+    gsap.to(window, {
+      duration: 1.5,
+      scrollTo: y,
+      ease: "elastic.out(1, 0.3)" // mimics spring-like motion
+    });
+  }
